@@ -8,21 +8,48 @@
 import SwiftUI
 
 struct TabBar: View {
-    
-    private let tabItems: [TabItem] = [
-        TabItem(title: "Learn now", iconName: "house"),
-        TabItem(title: "Explore", iconName: "magnifyingglass"),
-        TabItem(title: "Notifications", iconName: "bell"),
-        TabItem(title: "Library", iconName: "rectangle.stack")
-    ]
+
+    @State var selectedTab: TabItem = .home
     
     var body: some View {
         ZStack(alignment: .bottom) {
-            ContentView()
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-            HStack {
-                Spacer()
-                ForEach(tabItems) { item in
+            tabBarViews
+            tabBar
+        }
+    }
+}
+
+struct TabBar_Previews: PreviewProvider {
+    static var previews: some View {
+        TabBar()
+    }
+}
+
+extension TabBar {
+    
+    private var tabBarViews: some View {
+        Group {
+            switch selectedTab {
+            case .home:
+                Text("Learn now")
+            case .explore:
+                Text("Explore")
+            case .notifications:
+                Text("Notifications")
+            case .library:
+                Text("Library")
+            }
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+    }
+    
+    private var tabBar: some View {
+        HStack {
+            Spacer()
+            ForEach(TabItem.allCases, id: \.self) { item in
+                Button {
+                    selectedTab = item
+                } label: {
                     VStack(spacing: 0.0) {
                         Image(systemName: item.iconName)
                             .symbolVariant(.fill)
@@ -34,23 +61,18 @@ struct TabBar: View {
                     }
                     .frame(maxWidth: .infinity)
                 }
+                .foregroundStyle(selectedTab == item ? .primary : .secondary)
             }
-            .padding(.horizontal, 8)
-            .padding(.top, 14)
-            .frame(height: 88, alignment: .top)
-            .background(
-                .ultraThinMaterial,
-                in: RoundedRectangle(cornerRadius: 34, style: .continuous)
-            )
-            .strokeStyle(cornerRadius: 34)
-            .frame(maxHeight: .infinity, alignment: .bottom)
-            .ignoresSafeArea(edges: .bottom)
         }
-    }
-}
-
-struct TabBar_Previews: PreviewProvider {
-    static var previews: some View {
-        TabBar()
+        .padding(.horizontal, 8)
+        .padding(.top, 14)
+        .frame(height: 88, alignment: .top)
+        .background(
+            .ultraThinMaterial,
+            in: RoundedRectangle(cornerRadius: 34, style: .continuous)
+        )
+        .strokeStyle(cornerRadius: 34)
+        .frame(maxHeight: .infinity, alignment: .bottom)
+        .ignoresSafeArea(edges: .bottom)
     }
 }
