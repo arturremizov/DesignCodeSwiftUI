@@ -15,6 +15,8 @@
 		AF2056F2296AFB33005928A8 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2056F1296AFB33005928A8 /* AccountView.swift */; };
 		AF2056F4296B0785005928A8 /* BlobView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2056F3296B0785005928A8 /* BlobView.swift */; };
 		AF2056F6296B118F005928A8 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2056F5296B118F005928A8 /* TabBar.swift */; };
+		AF2056F8296B1507005928A8 /* TabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2056F7296B1507005928A8 /* TabItem.swift */; };
+		AF752303296CA5CA00A4875B /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF752302296CA5CA00A4875B /* View+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +29,8 @@
 		AF2056F1296AFB33005928A8 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		AF2056F3296B0785005928A8 /* BlobView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlobView.swift; sourceTree = "<group>"; };
 		AF2056F5296B118F005928A8 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
+		AF2056F7296B1507005928A8 /* TabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItem.swift; sourceTree = "<group>"; };
+		AF752302296CA5CA00A4875B /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,9 +66,11 @@
 				AF11742E2969BF3F00EDF86F /* DesignCodeSwiftUIApp.swift */,
 				AF1174302969BF3F00EDF86F /* ContentView.swift */,
 				AF2056F5296B118F005928A8 /* TabBar.swift */,
+				AF2056F7296B1507005928A8 /* TabItem.swift */,
 				AF2056F1296AFB33005928A8 /* AccountView.swift */,
 				AF2056EF296AF776005928A8 /* Styles.swift */,
 				AF2056F3296B0785005928A8 /* BlobView.swift */,
+				AF752304296CABB000A4875B /* Extensions */,
 				AF1174322969BF4100EDF86F /* Assets.xcassets */,
 				AF1174342969BF4100EDF86F /* Preview Content */,
 			);
@@ -77,6 +83,14 @@
 				AF1174352969BF4100EDF86F /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		AF752304296CABB000A4875B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				AF752302296CA5CA00A4875B /* View+Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -152,8 +166,10 @@
 				AF2056F4296B0785005928A8 /* BlobView.swift in Sources */,
 				AF2056F2296AFB33005928A8 /* AccountView.swift in Sources */,
 				AF1174312969BF3F00EDF86F /* ContentView.swift in Sources */,
+				AF2056F8296B1507005928A8 /* TabItem.swift in Sources */,
 				AF2056F6296B118F005928A8 /* TabBar.swift in Sources */,
 				AF2056F0296AF776005928A8 /* Styles.swift in Sources */,
+				AF752303296CA5CA00A4875B /* View+Extensions.swift in Sources */,
 				AF11742F2969BF3F00EDF86F /* DesignCodeSwiftUIApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
