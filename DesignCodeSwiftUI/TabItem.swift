@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-enum TabItem: String, CaseIterable {
+enum TabItem: CaseIterable {
     case home
     case explore
     case notifications
@@ -36,6 +36,19 @@ enum TabItem: String, CaseIterable {
             return "bell"
         case .library:
             return "rectangle.stack"
+        }
+    }
+    
+    var color: Color {
+        switch self {
+        case .home:
+            return .teal
+        case .explore:
+            return .blue
+        case .notifications:
+            return .red
+        case .library:
+            return .pink
         }
     }
 }

@@ -10,6 +10,7 @@ import SwiftUI
 struct TabBar: View {
 
     @State var selectedTab: TabItem = .home
+    @State var selectedTabButtonFrame: CGRect = .zero
     
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -48,7 +49,9 @@ extension TabBar {
             Spacer()
             ForEach(TabItem.allCases, id: \.self) { item in
                 Button {
-                    selectedTab = item
+                    withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
+                        selectedTab = item
+                    }
                 } label: {
                     VStack(spacing: 0.0) {
                         Image(systemName: item.iconName)
@@ -62,6 +65,20 @@ extension TabBar {
                     .frame(maxWidth: .infinity)
                 }
                 .foregroundStyle(selectedTab == item ? .primary : .secondary)
+                .blendMode(selectedTab == item ? .overlay : .normal)
+                .background {
+                    if selectedTab == item {
+                        GeometryReader { proxy in
+                            Color.clear
+                                .onAppear {
+                                    let frame = proxy.frame(in: .global)
+                                    withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
+                                        selectedTabButtonFrame = frame
+                                    }
+                                }
+                        }
+                    }
+                }
             }
         }
         .padding(.horizontal, 8)
@@ -71,8 +88,29 @@ extension TabBar {
             .ultraThinMaterial,
             in: RoundedRectangle(cornerRadius: 34, style: .continuous)
         )
+        .background(tabBarBackgroundCircle)
+        .overlay(alignment: .top) {
+            selectedTabIndicator
+        }
         .strokeStyle(cornerRadius: 34)
         .frame(maxHeight: .infinity, alignment: .bottom)
         .ignoresSafeArea(edges: .bottom)
+    }
+    
+    private var tabBarBackgroundCircle: some View {
+        Circle()
+            .fill(selectedTab.color)
+            .frame(width: selectedTabButtonFrame.size.width)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .offset(x: selectedTabButtonFrame.origin.x)
+    }
+    
+    private var selectedTabIndicator: some View {
+        RoundedRectangle(cornerRadius: 3, style: .continuous)
+            .fill(selectedTab.color)
+            .frame(width: 28, height: 5)
+            .frame(width: selectedTabButtonFrame.size.width)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .offset(x: selectedTabButtonFrame.origin.x)
     }
 }
