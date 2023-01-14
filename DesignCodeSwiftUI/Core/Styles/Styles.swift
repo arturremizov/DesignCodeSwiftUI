@@ -56,7 +56,7 @@ extension View {
         modifier(StrokeStyle(cornerRadius: cornerRadius))
     }
     
-    func strokeStyle(cornerRadius: CGFloat, corners: UIRectCorner = .allCorners) -> some View {
+    func strokeStyle(cornerRadius: CGFloat, corners: UIRectCorner) -> some View {
         modifier(RoundedCornerStrokeStyle(cornerRadius: cornerRadius, corners: corners))
     }
 }

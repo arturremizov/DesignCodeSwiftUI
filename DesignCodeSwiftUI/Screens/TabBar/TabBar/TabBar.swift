@@ -26,8 +26,10 @@ struct TabBar<Content: View>: View {
                 .animation(nil, value: selection)
                 .environment(\.selectedTabBarItem, selection)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .ignoresSafeArea()
-            
+                .safeAreaInset(edge: .bottom) {
+                    Color.clear
+                        .frame(height: 56)
+                }
             HStack {
                 tabBarButtons
             }

@@ -13,7 +13,7 @@ struct AppTabBar: View {
     
     var body: some View {
         TabBar(selection: $selectedTab) {
-            Text("Learn now")
+            HomeView()
                 .tabBarItem(tab: .home)
             Text("Explore")
                 .tabBarItem(tab: .explore)
