@@ -1,13 +1,13 @@
 //
-//  ContentView.swift
+//  FeaturedItem.swift
 //  DesignCodeSwiftUI
 //
-//  Created by Artur Remizov on 7.01.23.
+//  Created by Artur Remizov on 15.01.23.
 //
 
 import SwiftUI
 
-struct ContentView: View {
+struct FeaturedItem: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 8.0) {
             Spacer()
@@ -59,12 +59,12 @@ struct ContentView: View {
                 .scaledToFit()
                 .frame(height: 230)
                 .offset(x: 32, y: -80)
-        }
+    }
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct FeaturedItem_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        FeaturedItem()
     }
 }
