@@ -14,17 +14,8 @@ struct NavigationBar: View {
     
     var body: some View {
         ZStack {
-            Color.clear
-                .background(.ultraThinMaterial)
-                .blur(radius: 10)
-                .opacity(hasScrolled ? 1 : 0)
-
-            Text(title)
-                .font(.largeTitle)
-                .bold()
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.leading, 20)
-                .padding(.top, 20)
+            backgroundLayer
+            titleLayer
             
             HStack(spacing: 16.0) {
                 Image(systemName: "magnifyingglass")
@@ -62,5 +53,25 @@ struct NavigationBar: View {
 struct NavigationBar_Previews: PreviewProvider {
     static var previews: some View {
         NavigationBar(title: "Title", hasScrolled: .constant(false))
+    }
+}
+
+
+extension NavigationBar {
+    
+    private var backgroundLayer: some View {
+        Color.clear
+            .background(.ultraThinMaterial)
+            .blur(radius: 10)
+            .opacity(hasScrolled ? 1 : 0)
+    }
+    
+    private var titleLayer: some View {
+        Text(title)
+            .animatableFont(size: hasScrolled ? 22 : 34)
+            .bold()
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.leading, 20)
+            .padding(.top, 20)
     }
 }

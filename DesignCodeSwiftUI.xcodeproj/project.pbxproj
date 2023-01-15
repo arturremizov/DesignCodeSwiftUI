@@ -10,7 +10,7 @@
 		AF11742F2969BF3F00EDF86F /* DesignCodeSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF11742E2969BF3F00EDF86F /* DesignCodeSwiftUIApp.swift */; };
 		AF1174332969BF4100EDF86F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF1174322969BF4100EDF86F /* Assets.xcassets */; };
 		AF1174362969BF4100EDF86F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF1174352969BF4100EDF86F /* Preview Assets.xcassets */; };
-		AF2056F0296AF776005928A8 /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2056EF296AF776005928A8 /* Styles.swift */; };
+		AF2056F0296AF776005928A8 /* StrokeStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2056EF296AF776005928A8 /* StrokeStyle.swift */; };
 		AF2056F2296AFB33005928A8 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2056F1296AFB33005928A8 /* AccountView.swift */; };
 		AF2056F4296B0785005928A8 /* BlobView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2056F3296B0785005928A8 /* BlobView.swift */; };
 		AF2056F6296B118F005928A8 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2056F5296B118F005928A8 /* TabBar.swift */; };
@@ -23,6 +23,7 @@
 		AF4F2C7D29735A05004F62F6 /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4F2C7C29735A05004F62F6 /* NavigationBar.swift */; };
 		AFC8B1B92972F2CA002BF454 /* RoundedCornerShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC8B1B82972F2CA002BF454 /* RoundedCornerShape.swift */; };
 		AFF395F629744268001D073A /* ScrollPreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF395F529744268001D073A /* ScrollPreferenceKey.swift */; };
+		AFF395F829744A1D001D073A /* AnimatableFontModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF395F729744A1D001D073A /* AnimatableFontModifier.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,7 +31,7 @@
 		AF11742E2969BF3F00EDF86F /* DesignCodeSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignCodeSwiftUIApp.swift; sourceTree = "<group>"; };
 		AF1174322969BF4100EDF86F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AF1174352969BF4100EDF86F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		AF2056EF296AF776005928A8 /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
+		AF2056EF296AF776005928A8 /* StrokeStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrokeStyle.swift; sourceTree = "<group>"; };
 		AF2056F1296AFB33005928A8 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		AF2056F3296B0785005928A8 /* BlobView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlobView.swift; sourceTree = "<group>"; };
 		AF2056F5296B118F005928A8 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
@@ -43,6 +44,7 @@
 		AF4F2C7C29735A05004F62F6 /* NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
 		AFC8B1B82972F2CA002BF454 /* RoundedCornerShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCornerShape.swift; sourceTree = "<group>"; };
 		AFF395F529744268001D073A /* ScrollPreferenceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollPreferenceKey.swift; sourceTree = "<group>"; };
+		AFF395F729744A1D001D073A /* AnimatableFontModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatableFontModifier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,7 +134,8 @@
 		AF4F2C74297357DF004F62F6 /* Styles */ = {
 			isa = PBXGroup;
 			children = (
-				AF2056EF296AF776005928A8 /* Styles.swift */,
+				AF2056EF296AF776005928A8 /* StrokeStyle.swift */,
+				AFF395F729744A1D001D073A /* AnimatableFontModifier.swift */,
 			);
 			path = Styles;
 			sourceTree = "<group>";
@@ -252,7 +255,8 @@
 				AF4F2C6D29734F3A004F62F6 /* SelectedTabBarItemKey.swift in Sources */,
 				AF4F2C7D29735A05004F62F6 /* NavigationBar.swift in Sources */,
 				AF2056F6296B118F005928A8 /* TabBar.swift in Sources */,
-				AF2056F0296AF776005928A8 /* Styles.swift in Sources */,
+				AF2056F0296AF776005928A8 /* StrokeStyle.swift in Sources */,
+				AFF395F829744A1D001D073A /* AnimatableFontModifier.swift in Sources */,
 				AF4F2C6F297356F4004F62F6 /* AppTabBar.swift in Sources */,
 				AF11742F2969BF3F00EDF86F /* DesignCodeSwiftUIApp.swift in Sources */,
 				AF4F2C7B29735918004F62F6 /* FeaturedItem.swift in Sources */,

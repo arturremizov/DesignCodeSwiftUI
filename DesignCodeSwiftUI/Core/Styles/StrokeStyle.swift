@@ -1,5 +1,5 @@
 //
-//  Styles.swift
+//  StrokeStyle.swift
 //  DesignCodeSwiftUI
 //
 //  Created by Artur Remizov on 8.01.23.
