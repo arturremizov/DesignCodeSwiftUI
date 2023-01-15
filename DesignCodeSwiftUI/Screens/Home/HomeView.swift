@@ -10,6 +10,8 @@ import SwiftUI
 struct HomeView: View {
     
     @State private var hasScrolled: Bool = false
+    @Namespace private var namespace
+    @State private var showCourseDetail: Bool = false
     
     private let courses: [Course] = [
         Course(title: "SwiftUI for iOS 15", subtitle: "20 sections - 3 hours", text: "Build an iOS app for iOS 15 with custom layouts, animations and ...", image: "Illustration 5", logo: "Logo 2"),
@@ -26,9 +28,15 @@ struct HomeView: View {
             ScrollView {
                 scrollDetection
                 featuredLayer
-                
-                Color.clear
-                    .frame(height: 1000)
+                courseViewHeader
+                if !showCourseDetail {
+                    CourseView(namespace: namespace, show: $showCourseDetail)
+                        .onTapGesture {
+                            withAnimation(.spring(response: 0.6, dampingFraction: 0.8)) {
+                                showCourseDetail.toggle()
+                            }
+                        }
+                }
             }
             .coordinateSpace(name: "scroll")
             .safeAreaInset(edge: .top) {
@@ -36,6 +44,10 @@ struct HomeView: View {
                     .frame(height: 70)
             }
             .overlay(NavigationBar(title: "Featured", hasScrolled: $hasScrolled))
+            
+            if showCourseDetail {
+                CourseDetailView(namespace: namespace, show: $showCourseDetail)
+            }
         }
     }
 }
@@ -96,5 +108,14 @@ extension HomeView {
             Image("Blob 1")
                 .offset(x: 250, y:-100)
         )
+    }
+    
+    private var courseViewHeader: some View {
+        Text("Courses".uppercased())
+            .font(.footnote)
+            .fontWeight(.semibold)
+            .foregroundColor(.secondary)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.horizontal, 20)
     }
 }
