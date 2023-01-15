@@ -29,10 +29,7 @@ struct HomeView: View {
             Color.clear
                 .frame(height: 70)
         }
-        .overlay(
-            NavigationBar(title: "Featured")
-                .opacity(hasScrolled ? 1 : 0)
-        )
+        .overlay(NavigationBar(title: "Featured", hasScrolled: $hasScrolled))
         .onPreferenceChange(ScrollPreferenceKey.self) { scrollMinY in
             withAnimation(.easeInOut) {
                 hasScrolled = scrollMinY < 0
