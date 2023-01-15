@@ -36,11 +36,6 @@ struct HomeView: View {
                     .frame(height: 70)
             }
             .overlay(NavigationBar(title: "Featured", hasScrolled: $hasScrolled))
-            .onPreferenceChange(ScrollPreferenceKey.self) { scrollMinY in
-                withAnimation(.easeInOut) {
-                    hasScrolled = scrollMinY < 0
-                }
-        }
         }
     }
 }
@@ -62,6 +57,11 @@ extension HomeView {
                 .preference(key: ScrollPreferenceKey.self, value: scrollMinY)
         }
         .frame(height: 0)
+        .onPreferenceChange(ScrollPreferenceKey.self) { scrollMinY in
+            withAnimation(.easeInOut) {
+                hasScrolled = scrollMinY < 0
+            }
+        }
     }
     
     private var featuredLayer: some View {
