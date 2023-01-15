@@ -22,15 +22,10 @@ struct FeaturedItem: View {
         .padding(20)
         .padding(.vertical, 20)
         .frame(height: 350)
-        .background(
-            .ultraThinMaterial,
-            in: RoundedRectangle(cornerRadius: 30, style: .continuous)
-        )
-//        .mask(RoundedRectangle(cornerRadius: 30, style: .continuous))
-        .shadow(color: Color("ShadowColor").opacity(0.3), radius: 10, y: 10)
+        .background(.ultraThinMaterial)
+        .mask(RoundedRectangle(cornerRadius: 30, style: .continuous))
         .strokeStyle()
         .padding(.horizontal, 20)
-        .overlay(itemImage)
     }
 }
 
@@ -63,6 +58,7 @@ extension FeaturedItem {
     
     private var title: some View {
         Text(course.title)
+            .lineLimit(1)
             .font(.largeTitle)
             .fontWeight(.bold)
             .foregroundStyle(.linearGradient(colors: [.primary, .primary.opacity(0.5)], startPoint: .topLeading, endPoint: .bottomTrailing))
@@ -82,13 +78,5 @@ extension FeaturedItem {
             .lineLimit(2)
             .frame(maxWidth: .infinity, alignment: .leading)
             .foregroundStyle(.secondary)
-    }
-    
-    private var itemImage: some View {
-        Image(course.image)
-            .resizable()
-            .scaledToFit()
-            .frame(height: 230)
-            .offset(x: 32, y: -80)
     }
 }
