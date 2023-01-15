@@ -104,7 +104,7 @@ extension CourseDetailView {
     
     private var closeButton: some View {
         Button {
-            withAnimation(.spring(response: 0.6, dampingFraction: 0.8)) {
+            withAnimation(.closeCard) {
                 show.toggle()
             }
         } label: {
@@ -116,7 +116,7 @@ extension CourseDetailView {
                 .background(.ultraThinMaterial, in: Circle())
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
-        .padding(.horizontal, 20)
-//        .ignoresSafeArea()
+        .padding(20)
+        .ignoresSafeArea()
     }
 }

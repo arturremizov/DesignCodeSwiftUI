@@ -32,7 +32,7 @@ struct HomeView: View {
                 if !showCourseDetail {
                     CourseView(namespace: namespace, show: $showCourseDetail)
                         .onTapGesture {
-                            withAnimation(.spring(response: 0.6, dampingFraction: 0.8)) {
+                            withAnimation(.showCard) {
                                 showCourseDetail.toggle()
                             }
                         }
@@ -49,6 +49,7 @@ struct HomeView: View {
                 CourseDetailView(namespace: namespace, show: $showCourseDetail)
             }
         }
+        .statusBarHidden(showCourseDetail)
     }
 }
 
