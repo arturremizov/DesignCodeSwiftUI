@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CourseDetailView: View {
     
+    let course: Course
     var namespace: Namespace.ID
     @Binding var show: Bool
     
@@ -42,7 +43,7 @@ struct CourseDetailView: View {
 struct CourseDetailView_Previews: PreviewProvider {
     @Namespace static var namespace
     static var previews: some View {
-        CourseDetailView(namespace: namespace, show: .constant(true))
+        CourseDetailView(course: dev.course, namespace: namespace, show: .constant(true))
     }
 }
 
@@ -56,37 +57,37 @@ extension CourseDetailView {
         .frame(height: 500)
         .foregroundStyle(.black)
         .background(
-            Image("Illustration 9")
+            Image(course.image)
                 .resizable()
                 .scaledToFit()
-                .matchedGeometryEffect(id: "image", in: namespace)
+                .matchedGeometryEffect(id: "image-\(course.id)", in: namespace)
         )
         .background(
-            Image("Background 5")
+            Image(course.background)
                 .resizable()
                 .scaledToFill()
-                .matchedGeometryEffect(id: "background", in: namespace)
+                .matchedGeometryEffect(id: "background-\(course.id)", in: namespace)
         )
         .mask {
             RoundedRectangle(cornerRadius: 30, style: .continuous)
-                .matchedGeometryEffect(id: "mask", in: namespace)
+                .matchedGeometryEffect(id: "mask-\(course.id)", in: namespace)
         }
         .overlay {
             VStack(alignment: .leading, spacing: 12) {
-                Text("Hello, World!")
+                Text(course.title)
                     .font(.largeTitle)
                     .bold()
-                    .matchedGeometryEffect(id: "title", in: namespace)
+                    .matchedGeometryEffect(id: "title-\(course.id)", in: namespace)
                     .frame(maxWidth: .infinity, alignment: .leading)
                 
-                Text("Second Text".uppercased())
+                Text(course.subtitle.uppercased())
                     .font(.footnote)
                     .fontWeight(.semibold)
-                    .matchedGeometryEffect(id: "subtitle", in: namespace)
+                    .matchedGeometryEffect(id: "subtitle-\(course.id)", in: namespace)
                 
-                Text("Third Description Text")
+                Text(course.text)
                     .font(.footnote)
-                    .matchedGeometryEffect(id: "description", in: namespace)
+                    .matchedGeometryEffect(id: "description-\(course.id)", in: namespace)
               
                 Divider()
                     .opacity(showDivider ? 1 : 0)
@@ -112,7 +113,7 @@ extension CourseDetailView {
                 Rectangle()
                     .fill(.ultraThinMaterial)
                     .mask(RoundedRectangle(cornerRadius: 30, style: .continuous))
-                    .matchedGeometryEffect(id: "backgroundBlur", in: namespace)
+                    .matchedGeometryEffect(id: "backgroundBlur-\(course.id)", in: namespace)
             )
             .offset(y: 250)
             .padding(20)

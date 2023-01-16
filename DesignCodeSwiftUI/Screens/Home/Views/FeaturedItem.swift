@@ -31,12 +31,7 @@ struct FeaturedItem: View {
 
 struct FeaturedItem_Previews: PreviewProvider {
     static var previews: some View {
-        let course = Course(title: "SwiftUI for iOS 15",
-                            subtitle: "20 sections - 3 hours",
-                            text: "Build an iOS app for iOS 15 with custom layouts, animations and ...",
-                            image: "Illustration 5",
-                            logo: "Logo 2")
-        FeaturedItem(course: course)
+        FeaturedItem(course: dev.course)
     }
 }
 

@@ -7,12 +7,14 @@
 
 import SwiftUI
 
-struct Course: Identifiable {
+struct Course: Identifiable, Equatable {
     let id: UUID = UUID()
+    let index: Int
     let title: String
     let subtitle: String
     let text: String
     let image: String
+    let background: String
     let logo: String
 }
 

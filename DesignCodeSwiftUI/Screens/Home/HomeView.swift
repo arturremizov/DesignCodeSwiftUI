@@ -12,13 +12,9 @@ struct HomeView: View {
     @State private var hasScrolled: Bool = false
     @Namespace private var namespace
     @State private var showCourseDetail: Bool = false
+    @State private var selectedCourse: Course? = nil
     
-    private let courses: [Course] = [
-        Course(title: "SwiftUI for iOS 15", subtitle: "20 sections - 3 hours", text: "Build an iOS app for iOS 15 with custom layouts, animations and ...", image: "Illustration 5", logo: "Logo 2"),
-        Course(title: "UI Design for iOS 15", subtitle: "20 sections - 3 hours", text: "Design an iOS app for iOS 15 with custom layouts, animations and ...", image: "Illustration 3", logo: "Logo 4"),
-        Course(title: "Flutter for designers", subtitle: "20 sections - 3 hours", text: "Flutter is a relatively new toolkit that makes it easy to build cross-platform apps that look gorgeous and is easy to use.", image: "Illustration 1", logo: "Logo 1"),
-        Course(title: "React Hooks Advanced", subtitle: "20 sections - 3 hours", text: "Learn how to build a website with Typescript, Hooks, Contentful and Gatsby Cloud", image: "Illustration 2", logo: "Logo 3")
-    ]
+    @StateObject private var viewModel = HomeViewModel()
     
     var body: some View {
         ZStack {
@@ -29,13 +25,15 @@ struct HomeView: View {
                 scrollDetection
                 featuredLayer
                 courseViewHeader
-                if !showCourseDetail {
-                    CourseView(namespace: namespace, show: $showCourseDetail)
+                ForEach(viewModel.courses) { item in
+                    CourseView(course: item, namespace: namespace, show: $showCourseDetail)
+                        .opacity(selectedCourse == item && showCourseDetail ? 0 : 1)
                         .onTapGesture {
                             withAnimation(.showCard) {
+                                selectedCourse = item
                                 showCourseDetail.toggle()
                             }
-                        }
+                    }
                 }
             }
             .coordinateSpace(name: "scroll")
@@ -45,15 +43,19 @@ struct HomeView: View {
             }
             .overlay(NavigationBar(title: "Featured", hasScrolled: $hasScrolled))
             
-            if showCourseDetail {
-                CourseDetailView(namespace: namespace, show: $showCourseDetail)
-                    .zIndex(1)
-                    .transition(
-                        .asymmetric(
-                            insertion: .opacity.animation(.easeInOut(duration: 0.1)),
-                            removal: .opacity.animation(.easeInOut(duration: 0.3).delay(0.2))
-                        )
+            if let selectedCourse, showCourseDetail {
+                CourseDetailView(
+                    course:selectedCourse,
+                    namespace: namespace,
+                    show: $showCourseDetail
+                )
+                .zIndex(1)
+                .transition(
+                    .asymmetric(
+                        insertion: .opacity.animation(.easeInOut(duration: 0.1)),
+                        removal: .opacity.animation(.easeInOut(duration: 0.3).delay(0.2))
                     )
+                )
             }
         }
         .statusBarHidden(showCourseDetail)
@@ -86,7 +88,7 @@ extension HomeView {
     
     private var featuredLayer: some View {
         TabView {
-            ForEach(courses) { item in
+            ForEach(viewModel.featuredCourses) { item in
                 GeometryReader { proxy in
                     
                     let minX = proxy.frame(in: .global).minX
