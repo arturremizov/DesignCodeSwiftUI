@@ -50,74 +50,100 @@ struct CourseDetailView_Previews: PreviewProvider {
 extension CourseDetailView {
     
     private var headerLayer: some View {
-        VStack {
-            Spacer()
-        }
-        .frame(maxWidth: .infinity)
-        .frame(height: 500)
-        .foregroundStyle(.black)
-        .background(
-            Image(course.image)
-                .resizable()
-                .scaledToFit()
-                .matchedGeometryEffect(id: "image-\(course.id)", in: namespace)
-        )
-        .background(
-            Image(course.background)
-                .resizable()
-                .scaledToFill()
-                .matchedGeometryEffect(id: "background-\(course.id)", in: namespace)
-        )
-        .mask {
-            RoundedRectangle(cornerRadius: 30, style: .continuous)
-                .matchedGeometryEffect(id: "mask-\(course.id)", in: namespace)
-        }
-        .overlay {
-            VStack(alignment: .leading, spacing: 12) {
-                Text(course.title)
-                    .font(.largeTitle)
-                    .bold()
-                    .matchedGeometryEffect(id: "title-\(course.id)", in: namespace)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                
-                Text(course.subtitle.uppercased())
-                    .font(.footnote)
-                    .fontWeight(.semibold)
-                    .matchedGeometryEffect(id: "subtitle-\(course.id)", in: namespace)
-                
-                Text(course.text)
-                    .font(.footnote)
-                    .matchedGeometryEffect(id: "description-\(course.id)", in: namespace)
-              
-                Divider()
-                    .opacity(showDivider ? 1 : 0)
-                
-                HStack {
-                    Image("Avatar Default")
-                        .resizable()
-                        .frame(width: 26, height: 26)
-                        .cornerRadius(10)
-                        .padding(8)
-                        .background(
-                            .ultraThinMaterial,
-                            in: RoundedRectangle(cornerRadius: 18, style: .continuous)
-                        )
-                        .strokeStyle(cornerRadius: 18)
-                    Text("Taught by Meng To")
-                        .font(.footnote)
-                }
-                .opacity(showAuthor ? 1 : 0)
+        GeometryReader { proxy in
+            let scrollY = proxy.frame(in: .global).minY
+            VStack {
+                Spacer()
             }
-            .padding(20)
+            .frame(maxWidth: .infinity)
+            .frame(height: scrollY > 0 ? 500 + scrollY : 500)
+            .foregroundStyle(.black)
             .background(
-                Rectangle()
-                    .fill(.ultraThinMaterial)
-                    .mask(RoundedRectangle(cornerRadius: 30, style: .continuous))
-                    .matchedGeometryEffect(id: "backgroundBlur-\(course.id)", in: namespace)
+                courseImage
+                    .offset(y: scrollY > 0 ? scrollY * -0.8 : 0)
             )
-            .offset(y: 250)
-            .padding(20)
+            .background(
+                headerBackgroundImage
+                    .offset(y: scrollY > 0 ? -scrollY : 0)
+                    .scaleEffect(scrollY > 0 ? scrollY / 1000 + 1 : 1)
+                    .blur(radius: scrollY / 10)
+            )
+            .mask {
+                headerMask
+                    .offset(y: scrollY > 0 ? -scrollY : 0)
+            }
+            .overlay {
+                courseInfoCard
+                    .offset(y: 250)
+                    .padding(20)
+                    .offset(y: scrollY > 0 ? scrollY * -0.6 : 0)
+            }
         }
+        .frame(height: 500)
+    }
+    
+    private var courseImage: some View {
+        Image(course.image)
+            .resizable()
+            .scaledToFit()
+            .matchedGeometryEffect(id: "image-\(course.id)", in: namespace)
+    }
+    
+    private var headerBackgroundImage: some View {
+        Image(course.background)
+            .resizable()
+            .scaledToFill()
+            .matchedGeometryEffect(id: "background-\(course.id)", in: namespace)
+    }
+    
+    private var headerMask: some View {
+        RoundedRectangle(cornerRadius: 30, style: .continuous)
+            .matchedGeometryEffect(id: "mask-\(course.id)", in: namespace)
+    }
+    
+    private var courseInfoCard: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            Text(course.title)
+                .font(.largeTitle)
+                .bold()
+                .matchedGeometryEffect(id: "title-\(course.id)", in: namespace)
+                .frame(maxWidth: .infinity, alignment: .leading)
+            
+            Text(course.subtitle.uppercased())
+                .font(.footnote)
+                .fontWeight(.semibold)
+                .matchedGeometryEffect(id: "subtitle-\(course.id)", in: namespace)
+            
+            Text(course.text)
+                .font(.footnote)
+                .matchedGeometryEffect(id: "description-\(course.id)", in: namespace)
+          
+            Divider()
+                .opacity(showDivider ? 1 : 0)
+            
+            HStack {
+                Image("Avatar Default")
+                    .resizable()
+                    .frame(width: 26, height: 26)
+                    .cornerRadius(10)
+                    .padding(8)
+                    .background(
+                        .ultraThinMaterial,
+                        in: RoundedRectangle(cornerRadius: 18, style: .continuous)
+                    )
+                    .strokeStyle(cornerRadius: 18)
+                Text("Taught by Meng To")
+                    .font(.footnote)
+            }
+            .opacity(showAuthor ? 1 : 0)
+        }
+        .padding(20)
+        .background(
+            Rectangle()
+                .fill(.ultraThinMaterial)
+                .mask(RoundedRectangle(cornerRadius: 30, style: .continuous))
+                .matchedGeometryEffect(id: "backgroundBlur-\(course.id)", in: namespace)
+        )
     }
     
     private var closeButton: some View {
