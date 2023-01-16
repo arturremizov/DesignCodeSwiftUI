@@ -18,6 +18,7 @@ struct CourseDetailView: View {
     @State private var showContent: Bool = false
     
     @State private var viewState: CGSize = .zero
+    @State private var isDraggable: Bool = true
     
     var body: some View {
         ZStack {
@@ -36,18 +37,7 @@ struct CourseDetailView: View {
             .scaleEffect(viewState.width / -500 + 1)
             .background(.black.opacity(viewState.width / 500))
             .background(.ultraThinMaterial)
-            .gesture(
-                DragGesture()
-                    .onChanged { value in
-                        guard value.translation.width > 0 else { return }
-                        viewState = value.translation
-                    }
-                    .onEnded { value in
-                        withAnimation(.closeCard) {
-                            viewState = .zero
-                        }
-                    }
-            )
+            .gesture(isDraggable ? dragGesture : nil)
             .ignoresSafeArea()
             .onChange(of: show) { _ in
                 showDivider = false
@@ -203,6 +193,25 @@ extension CourseDetailView {
 
 extension CourseDetailView {
     
+    private var dragGesture: some Gesture {
+        DragGesture(minimumDistance: 30, coordinateSpace: .local)
+            .onChanged { value in
+                guard
+                    value.translation.width > 0,
+                    value.startLocation.x < 20
+                else { return }
+                withAnimation(.closeCard) {
+                    viewState = value.translation
+                }
+                if viewState.width > 120 {
+                    close(at: 120)
+                }
+            }
+            .onEnded { value in
+                close(at: 80)
+            }
+    }
+    
     private func fadeInViews() {
         withAnimation(.easeOut.delay(0.3)) {
             showDivider = true
@@ -213,5 +222,17 @@ extension CourseDetailView {
         withAnimation(.easeOut.delay(0.5)) {
             showContent = true
         }
+    }
+    
+    private func close(at dragWidth: CGFloat) {
+        if viewState.width > dragWidth {
+            withAnimation(.closeCard.delay(0.3)) {
+                show.toggle()
+            }
+        }
+        withAnimation(.closeCard) {
+            viewState = .zero
+        }
+        isDraggable = false
     }
 }
