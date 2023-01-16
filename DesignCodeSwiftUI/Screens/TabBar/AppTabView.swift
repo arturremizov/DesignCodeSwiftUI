@@ -1,5 +1,5 @@
 //
-//  AppTabBar.swift
+//  AppTabView.swift
 //  DesignCodeSwiftUI
 //
 //  Created by Artur Remizov on 15.01.23.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct AppTabBar: View {
+struct AppTabView: View {
     
     @State var selectedTab: TabItem = .home
     
@@ -27,6 +27,6 @@ struct AppTabBar: View {
 
 struct AppTabBar_Previews: PreviewProvider {
     static var previews: some View {
-        AppTabBar()
+        AppTabView()
     }
 }

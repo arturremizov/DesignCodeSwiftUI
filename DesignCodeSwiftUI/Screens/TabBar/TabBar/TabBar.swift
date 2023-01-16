@@ -14,6 +14,7 @@ struct TabBar<Content: View>: View {
     
     @State private var tabs: [TabItem] = []
     @Namespace private var namespace
+    @State private var isTabBarHidden: Bool = false
     
     init(selection: Binding<TabItem>, @ViewBuilder content: () -> Content) {
         _selection = selection
@@ -30,6 +31,15 @@ struct TabBar<Content: View>: View {
                     Color.clear
                         .frame(height: 56)
                 }
+                .onPreferenceChange(ShowTabBarPreferenceKey.self) { showTabBarPreference in
+                    if showTabBarPreference.animated {
+                        withAnimation(.easeOut) {
+                            self.isTabBarHidden = showTabBarPreference.hidden
+                        }
+                    } else {
+                        self.isTabBarHidden = showTabBarPreference.hidden
+                    }
+                }
             HStack {
                 tabBarButtons
             }
@@ -39,6 +49,7 @@ struct TabBar<Content: View>: View {
             .background(backgroundLayer)
             .background(backgroundCircleLayer)
             .overlay(selectedTabIndicator)
+            .offset(y: isTabBarHidden ? 200 : 0)
         }
         .onPreferenceChange(TabBarItemPreferenceKey.self) { value in
             self.tabs = value

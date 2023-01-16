@@ -25,16 +25,7 @@ struct HomeView: View {
                 scrollDetection
                 featuredLayer
                 courseViewHeader
-                ForEach(viewModel.courses) { item in
-                    CourseView(course: item, namespace: namespace, show: $showCourseDetail)
-                        .opacity(selectedCourse == item && showCourseDetail ? 0 : 1)
-                        .onTapGesture {
-                            withAnimation(.showCard) {
-                                selectedCourse = item
-                                showCourseDetail.toggle()
-                            }
-                    }
-                }
+                coursesLayer
             }
             .coordinateSpace(name: "scroll")
             .safeAreaInset(edge: .top) {
@@ -59,6 +50,7 @@ struct HomeView: View {
             }
         }
         .statusBarHidden(showCourseDetail)
+        .tabBarHidden(showCourseDetail)
     }
 }
 
@@ -127,5 +119,18 @@ extension HomeView {
             .foregroundColor(.secondary)
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.horizontal, 20)
+    }
+    
+    private var coursesLayer: some View {
+        ForEach(viewModel.courses) { item in
+            CourseView(course: item, namespace: namespace, show: $showCourseDetail)
+                .opacity(selectedCourse == item && showCourseDetail ? 0 : 1)
+                .onTapGesture {
+                    withAnimation(.showCard) {
+                        selectedCourse = item
+                        showCourseDetail.toggle()
+                    }
+            }
+        }
     }
 }
