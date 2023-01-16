@@ -15,13 +15,13 @@ struct CourseView: View {
     var body: some View {
         VStack {
             Spacer()
-            VStack(alignment: .leading, spacing: 20.0) {
+            VStack(alignment: .leading, spacing: 12) {
                 Text("Hello, World!")
                     .font(.largeTitle)
                     .bold()
                     .matchedGeometryEffect(id: "title", in: namespace)
                     .frame(maxWidth: .infinity, alignment: .leading)
-                Text("Second Text")
+                Text("Second Text".uppercased())
                     .font(.footnote)
                     .fontWeight(.semibold)
                     .matchedGeometryEffect(id: "subtitle", in: namespace)
