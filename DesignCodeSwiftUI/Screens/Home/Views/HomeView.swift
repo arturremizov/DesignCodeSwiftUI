@@ -127,15 +127,29 @@ extension HomeView {
     }
     
     private var coursesLayer: some View {
-        ForEach(viewModel.courses) { item in
-            CourseView(course: item, namespace: namespace, show: $showCourseDetail)
-                .opacity(selectedCourse == item && showCourseDetail ? 0 : 1)
-                .onTapGesture {
-                    withAnimation(.showCard) {
-                        selectedCourse = item
-                        showCourseDetail.toggle()
+        LazyVGrid(columns: [GridItem(.adaptive(minimum: 300), spacing: 20)], spacing: 20) {
+            if !showCourseDetail {
+                ForEach(viewModel.courses) { item in
+                    CourseView(course: item, namespace: namespace, show: $showCourseDetail)
+                        .onTapGesture {
+                            withAnimation(.showCard) {
+                                selectedCourse = item
+                                showCourseDetail.toggle()
+                            }
                     }
+                }
+            } else {
+                ForEach(viewModel.courses) { item in
+                    Rectangle()
+                        .fill(.white)
+                        .frame(height: 300)
+                        .cornerRadius(30)
+                        .shadow(color: Color("ShadowColor"), radius: 20, y: 10)
+                        .opacity(0.3)
+                        .padding(.horizontal, 30)
+                }
             }
         }
+        .padding(.horizontal, 20)
     }
 }

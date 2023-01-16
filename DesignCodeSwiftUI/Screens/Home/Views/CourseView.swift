@@ -44,6 +44,7 @@ struct CourseView: View {
             Image(course.image)
                 .resizable()
                 .scaledToFit()
+                .padding(20)
                 .matchedGeometryEffect(id: "image-\(course.id)", in: namespace)
         )
         .background(
@@ -57,7 +58,6 @@ struct CourseView: View {
                 .matchedGeometryEffect(id: "mask-\(course.id)", in: namespace)
         }
         .frame(height: 300)
-        .padding(20)
     }
 }
 

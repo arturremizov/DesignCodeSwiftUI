@@ -97,6 +97,8 @@ extension CourseDetailView {
         Image(course.image)
             .resizable()
             .scaledToFit()
+            .padding(20)
+            .frame(maxWidth: 500)
             .matchedGeometryEffect(id: "image-\(course.id)", in: namespace)
     }
     
@@ -108,7 +110,7 @@ extension CourseDetailView {
     }
     
     private var headerMask: some View {
-        RoundedRectangle(cornerRadius: 30, style: .continuous)
+        RoundedRectangle(cornerRadius: show ? 0 : 30, style: .continuous)
             .matchedGeometryEffect(id: "mask-\(course.id)", in: namespace)
     }
     
