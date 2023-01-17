@@ -7,10 +7,19 @@
 
 import SwiftUI
 
-struct NavigationBar: View {
+struct NavigationBar<Content: View>: View {
     
-    var title: String
+    let title: String
     @Binding var hasScrolled: Bool
+    let trailingButtons: Content
+    
+    init(title: String,
+         hasScrolled: Binding<Bool>,
+         @ViewBuilder trailingButtons: () -> Content) {
+        self.title = title
+        self._hasScrolled = hasScrolled
+        self.trailingButtons = trailingButtons()
+    }
     
     var body: some View {
         ZStack {
@@ -18,27 +27,7 @@ struct NavigationBar: View {
             titleLayer
             
             HStack(spacing: 16.0) {
-                Image(systemName: "magnifyingglass")
-                    .font(.body)
-                    .bold()
-                    .frame(width: 36, height: 36)
-                    .foregroundColor(.secondary)
-                    .background(
-                        .ultraThinMaterial,
-                        in: RoundedRectangle(cornerRadius: 14, style: .continuous)
-                    )
-                    .strokeStyle(cornerRadius: 14)
-                
-                Image("Avatar Default")
-                    .resizable()
-                    .frame(width: 26, height: 26)
-                    .cornerRadius(10)
-                    .padding(8)
-                    .background(
-                        .ultraThinMaterial,
-                        in: RoundedRectangle(cornerRadius: 18, style: .continuous)
-                    )
-                    .strokeStyle(cornerRadius: 18)
+               trailingButtons
             }
             .frame(maxWidth: .infinity, alignment: .trailing)
             .padding(.trailing, 20)
@@ -52,7 +41,18 @@ struct NavigationBar: View {
 
 struct NavigationBar_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationBar(title: "Title", hasScrolled: .constant(false))
+        NavigationBar(title: "Title", hasScrolled: .constant(false)) {
+            Image(systemName: "magnifyingglass")
+                .font(.body)
+                .bold()
+                .frame(width: 36, height: 36)
+                .foregroundColor(.secondary)
+                .background(
+                    .ultraThinMaterial,
+                    in: RoundedRectangle(cornerRadius: 14, style: .continuous)
+                )
+                .strokeStyle(cornerRadius: 14)
+        }
     }
 }
 

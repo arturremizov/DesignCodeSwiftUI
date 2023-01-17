@@ -10,6 +10,8 @@
 		AF11742F2969BF3F00EDF86F /* DesignCodeSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF11742E2969BF3F00EDF86F /* DesignCodeSwiftUIApp.swift */; };
 		AF1174332969BF4100EDF86F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF1174322969BF4100EDF86F /* Assets.xcassets */; };
 		AF1174362969BF4100EDF86F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF1174352969BF4100EDF86F /* Preview Assets.xcassets */; };
+		AF1DD3CD2976ECA7000DA49A /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1DD3CC2976ECA7000DA49A /* SearchView.swift */; };
+		AF1DD3CF2976F497000DA49A /* HexagonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1DD3CE2976F497000DA49A /* HexagonView.swift */; };
 		AF2056F0296AF776005928A8 /* StrokeStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2056EF296AF776005928A8 /* StrokeStyle.swift */; };
 		AF2056F2296AFB33005928A8 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2056F1296AFB33005928A8 /* AccountView.swift */; };
 		AF2056F4296B0785005928A8 /* BlobView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2056F3296B0785005928A8 /* BlobView.swift */; };
@@ -38,6 +40,8 @@
 		AF11742E2969BF3F00EDF86F /* DesignCodeSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignCodeSwiftUIApp.swift; sourceTree = "<group>"; };
 		AF1174322969BF4100EDF86F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AF1174352969BF4100EDF86F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		AF1DD3CC2976ECA7000DA49A /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		AF1DD3CE2976F497000DA49A /* HexagonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexagonView.swift; sourceTree = "<group>"; };
 		AF2056EF296AF776005928A8 /* StrokeStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrokeStyle.swift; sourceTree = "<group>"; };
 		AF2056F1296AFB33005928A8 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		AF2056F3296B0785005928A8 /* BlobView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlobView.swift; sourceTree = "<group>"; };
@@ -93,7 +97,6 @@
 			children = (
 				AF4F2C7229735763004F62F6 /* Application */,
 				AF2056F3296B0785005928A8 /* BlobView.swift */,
-				AF2056F1296AFB33005928A8 /* AccountView.swift */,
 				AF4F2C75297357EC004F62F6 /* Core */,
 				AF4F2C702973572B004F62F6 /* Screens */,
 				AF1174322969BF4100EDF86F /* Assets.xcassets */,
@@ -183,6 +186,9 @@
 				AFFDC63729749A1300E403B5 /* CourseDetailView.swift */,
 				AF4F2C7A29735918004F62F6 /* FeaturedItem.swift */,
 				AFFDC6352974994700E403B5 /* CourseView.swift */,
+				AF1DD3CC2976ECA7000DA49A /* SearchView.swift */,
+				AF2056F1296AFB33005928A8 /* AccountView.swift */,
+				AF1DD3CE2976F497000DA49A /* HexagonView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -314,9 +320,11 @@
 				AF2056F0296AF776005928A8 /* StrokeStyle.swift in Sources */,
 				AFF395FA29744E62001D073A /* Course.swift in Sources */,
 				AFF395F829744A1D001D073A /* AnimatableFontModifier.swift in Sources */,
+				AF1DD3CD2976ECA7000DA49A /* SearchView.swift in Sources */,
 				AFFDC6362974994700E403B5 /* CourseView.swift in Sources */,
 				AF4F2C6F297356F4004F62F6 /* AppTabView.swift in Sources */,
 				AFFDC63A2974A07400E403B5 /* Animations.swift in Sources */,
+				AF1DD3CF2976F497000DA49A /* HexagonView.swift in Sources */,
 				AF11742F2969BF3F00EDF86F /* DesignCodeSwiftUIApp.swift in Sources */,
 				AF4F2C7B29735918004F62F6 /* FeaturedItem.swift in Sources */,
 				AF4F2C78297358C7004F62F6 /* HomeView.swift in Sources */,

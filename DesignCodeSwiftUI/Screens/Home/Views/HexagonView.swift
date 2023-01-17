@@ -1,13 +1,13 @@
 //
-//  AccountView.swift
+//  HexagonView.swift
 //  DesignCodeSwiftUI
 //
-//  Created by Artur Remizov on 8.01.23.
+//  Created by Artur Remizov on 17.01.23.
 //
 
 import SwiftUI
 
-struct AccountView: View {
+struct HexagonView: View {
     var body: some View {
         Canvas { context, size in
             context.draw(
@@ -42,8 +42,8 @@ struct AccountView: View {
     }
 }
 
-struct AccountView_Previews: PreviewProvider {
+struct HexagonView_Previews: PreviewProvider {
     static var previews: some View {
-        AccountView()
+        HexagonView()
     }
 }

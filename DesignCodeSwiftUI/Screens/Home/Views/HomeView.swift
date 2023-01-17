@@ -13,6 +13,8 @@ struct HomeView: View {
     @Namespace private var namespace
     @State private var showCourseDetail: Bool = false
     @State private var selectedCourse: Course? = nil
+    @State private var showSearch: Bool = false
+    @State private var showAccount: Bool = false
     
     @StateObject private var viewModel = HomeViewModel()
     
@@ -32,7 +34,7 @@ struct HomeView: View {
                 Color.clear
                     .frame(height: 70)
             }
-            .overlay(NavigationBar(title: "Featured", hasScrolled: $hasScrolled))
+            .overlay(navigationBar)
             
             if let selectedCourse, showCourseDetail {
                 CourseDetailView(
@@ -67,6 +69,50 @@ struct HomeView_Previews: PreviewProvider {
 
 
 extension HomeView {
+    
+    private var navigationBar: some View {
+        NavigationBar(
+            title: "Featured",
+            hasScrolled: $hasScrolled,
+            trailingButtons: {
+                Button {
+                    showSearch = true
+                } label: {
+                    Image(systemName: "magnifyingglass")
+                        .font(.body)
+                        .bold()
+                        .frame(width: 36, height: 36)
+                        .foregroundColor(.secondary)
+                        .background(
+                            .ultraThinMaterial,
+                            in: RoundedRectangle(cornerRadius: 14, style: .continuous)
+                        )
+                        .strokeStyle(cornerRadius: 14)
+                }
+                .sheet(isPresented: $showSearch) {
+                    SearchView(courses: viewModel.courses)
+                }
+                
+                Button {
+                    showAccount = true
+                } label: {
+                    Image("Avatar Default")
+                        .resizable()
+                        .frame(width: 26, height: 26)
+                        .cornerRadius(10)
+                        .padding(8)
+                        .background(
+                            .ultraThinMaterial,
+                            in: RoundedRectangle(cornerRadius: 18, style: .continuous)
+                        )
+                        .strokeStyle(cornerRadius: 18)
+                }
+                .sheet(isPresented: $showAccount) {
+                    AccountView()
+                }
+            }
+        )
+    }
     
     private var scrollDetection: some View {
         GeometryReader { proxy in
