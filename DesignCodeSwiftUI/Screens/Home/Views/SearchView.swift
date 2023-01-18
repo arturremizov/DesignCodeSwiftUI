@@ -12,6 +12,9 @@ struct SearchView: View {
     @State var text: String = ""
     let courses: [Course]
     @Environment(\.dismiss) var dismiss
+    @State private var selectedCourse: Course? = nil
+    @State private var showCourseDetail: Bool = false
+    @Namespace private var namespace
     
     private let suggestions: [CourseSuggestion] = [
         CourseSuggestion(title: "SwiftUI"),
@@ -59,6 +62,9 @@ struct SearchView: View {
             .navigationTitle("Search")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar { doneButton }
+            .sheet(item: $selectedCourse, content: { selectedCourse in
+                CourseDetailView(course: selectedCourse, namespace: namespace, show: $showCourseDetail)
+            })
         }
     }
 }
@@ -72,27 +78,37 @@ struct SearchView_Previews: PreviewProvider {
 extension SearchView {
     
     private var contentLayer: some View {
-        ForEach(filteredCourses) { item in
-            HStack(alignment: .top, spacing: 12.0) {
-                Image(item.image)
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: 44, height: 44)
-                    .background(Color("BackgroundColor"))
-                    .mask(Circle())
-                
-                VStack(alignment: .leading, spacing: 4.0) {
-                    Text(item.title)
-                        .bold()
-                    Text(item.text)
-                        .font(.footnote)
-                        .foregroundColor(.secondary)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .multilineTextAlignment(.leading)
-                }
+        ForEach(Array(filteredCourses.enumerated()), id: \.offset) { index, item in
+            
+            if index != 0 {
+                Divider()
             }
-            .padding(.vertical, 4)
-            .listRowSeparator(.hidden)
+            
+            Button {
+                selectedCourse = item
+            } label: {
+                HStack(alignment: .top, spacing: 12.0) {
+                    Image(item.image)
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 44, height: 44)
+                        .background(Color("BackgroundColor"))
+                        .mask(Circle())
+                    
+                    VStack(alignment: .leading, spacing: 4.0) {
+                        Text(item.title)
+                            .bold()
+                            .foregroundColor(.primary)
+                        Text(item.text)
+                            .font(.footnote)
+                            .foregroundColor(.secondary)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .multilineTextAlignment(.leading)
+                    }
+                }
+                .padding(.vertical, 4)
+                .listRowSeparator(.hidden)
+            }
         }
     }
     

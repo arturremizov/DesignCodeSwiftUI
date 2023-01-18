@@ -15,6 +15,8 @@ struct HomeView: View {
     @State private var selectedCourse: Course? = nil
     @State private var showSearch: Bool = false
     @State private var showAccount: Bool = false
+    @State private var selectedFeaturedCourse: Course? = nil
+
     
     @StateObject private var viewModel = HomeViewModel()
     
@@ -152,6 +154,9 @@ extension HomeView {
                                 .offset(x: 32, y: -80)
                                 .offset(x: minX / 2)
                         }
+                        .onTapGesture {
+                            selectedFeaturedCourse = item
+                        }
                 }
             }
         }
@@ -161,6 +166,9 @@ extension HomeView {
             Image("Blob 1")
                 .offset(x: 250, y:-100)
         )
+        .sheet(item: $selectedFeaturedCourse) { course in
+            CourseDetailView(course: course, namespace: namespace, show: .constant(true))
+        }
     }
     
     private var courseViewHeader: some View {

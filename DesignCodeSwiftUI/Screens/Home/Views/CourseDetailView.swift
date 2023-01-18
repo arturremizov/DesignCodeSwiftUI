@@ -19,6 +19,7 @@ struct CourseDetailView: View {
     
     @State private var viewState: CGSize = .zero
     @State private var isDraggable: Bool = true
+    @Environment(\.dismiss) var dismiss
     
     var body: some View {
         ZStack {
@@ -29,6 +30,7 @@ struct CourseDetailView: View {
                     .padding(.bottom, 200)
                     .opacity(showContent ? 1 : 0)
             }
+            .coordinateSpace(name: "scrollView")
             .background(Color("BackgroundColor"))
             .mask {
                 RoundedRectangle(cornerRadius: viewState.width / 3, style: .continuous)
@@ -62,7 +64,7 @@ extension CourseDetailView {
     
     private var headerLayer: some View {
         GeometryReader { proxy in
-            let scrollY = proxy.frame(in: .global).minY
+            let scrollY = proxy.frame(in: .named("scrollView")).minY
             VStack {
                 Spacer()
             }
@@ -163,6 +165,7 @@ extension CourseDetailView {
         Button {
             withAnimation(.closeCard) {
                 show.toggle()
+                dismiss()
             }
         } label: {
             Image(systemName: "xmark")
