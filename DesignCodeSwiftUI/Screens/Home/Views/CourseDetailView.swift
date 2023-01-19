@@ -47,7 +47,13 @@ struct CourseDetailView: View {
                 showContent = false
             }
 
-            closeButton
+            CloseButton {
+                withAnimation(.closeCard) {
+                    show.toggle()
+                    dismiss()
+                }
+            }
+            .ignoresSafeArea()
         }
         .onAppear(perform: fadeInViews)
     }
@@ -159,25 +165,6 @@ extension CourseDetailView {
                 .mask(RoundedRectangle(cornerRadius: 30, style: .continuous))
                 .matchedGeometryEffect(id: "backgroundBlur-\(course.id)", in: namespace)
         )
-    }
-    
-    private var closeButton: some View {
-        Button {
-            withAnimation(.closeCard) {
-                show.toggle()
-                dismiss()
-            }
-        } label: {
-            Image(systemName: "xmark")
-                .font(.body)
-                .bold()
-                .foregroundColor(.secondary)
-                .padding(8)
-                .background(.ultraThinMaterial, in: Circle())
-        }
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
-        .padding(20)
-        .ignoresSafeArea()
     }
     
     private var content: some View {
