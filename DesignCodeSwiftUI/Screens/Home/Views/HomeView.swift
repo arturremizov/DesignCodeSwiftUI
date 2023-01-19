@@ -60,7 +60,7 @@ struct HomeView: View {
             }
         }
         .statusBarHidden(showCourseDetail)
-        .tabBarHidden(showCourseDetail)
+        .tabBarHidden(showCourseDetail || showSignUpView)
         .onChange(of: showCourseDetail) { newValue in
             if !newValue {
                 selectedCourse = nil
