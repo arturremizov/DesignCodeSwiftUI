@@ -7,14 +7,21 @@
 
 import SwiftUI
 
+
 struct SignUpView: View {
     
-    enum Field: Hashable {
+    enum SignType {
+        case signUp
+        case signIn
+    }
+    
+    fileprivate enum Field: Hashable {
         case email
         case password
     }
     
     @Binding var show: Bool
+    @State var type: SignType
     
     @State private var email: String = ""
     @State private var password: String = ""
@@ -24,6 +31,10 @@ struct SignUpView: View {
     @State private var passwordY: CGFloat = 0
     @State private var circleColor: Color = .blue
 
+    private var titleText: String {
+        type == .signUp ? "Sign up" : "Sign in"
+    }
+    
     var body: some View {
         ZStack {
             Color.clear
@@ -31,7 +42,7 @@ struct SignUpView: View {
                 .ignoresSafeArea()
             
             VStack(alignment: .leading, spacing: 16.0) {
-                Text("Sign up")
+                Text(titleText)
                     .font(.largeTitle)
                     .bold()
                 Text("Access 120+ hours of courses, tutorials and livestreams")
@@ -85,7 +96,7 @@ struct SignUpView: View {
 struct SignUpView_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
-            SignUpView(show: .constant(true))
+            SignUpView(show: .constant(true), type: .signIn)
         }
     }
 }
@@ -150,7 +161,7 @@ extension SignUpView {
         Button {
             
         } label: {
-            Text("Create an account")
+            Text(type == .signUp ? "Create an account" : "Sign in")
                 .frame(maxWidth: .infinity)
         }
         .font(.headline)
@@ -162,19 +173,21 @@ extension SignUpView {
     
     private var footerLayer: some View {
         Group {
-            Text("By clicking on") +
-            Text(" _Create an account_,")
-                .foregroundColor(.primary.opacity(0.7)) +
-            Text(" you agree to our **Terms of service** and **[Privacy policy](https://designcode.io)**.")
+            if type == .signUp {
+                Text("By clicking on") +
+                Text(" _Create an account_,")
+                    .foregroundColor(.primary.opacity(0.7)) +
+                Text(" you agree to our **Terms of service** and **[Privacy policy](https://designcode.io)**.")
+            }
             
             Divider()
             
             HStack {
-                Text("Already have an account?")
+                Text(type == .signUp ? "Already have an account?" : "No account yet?")
                 Button {
-                    
+                    type = (type == .signUp) ? .signIn : .signUp
                 } label: {
-                    Text("**Sign in**")
+                    Text(type == .signUp ? "**Sign in**" : "**Sign up**")
                 }
             }
         }

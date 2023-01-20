@@ -55,7 +55,7 @@ struct HomeView: View {
             }
             
             if showSignUpView {
-                SignUpView(show: $showSignUpView)
+                SignUpView(show: $showSignUpView, type: .signIn)
                     .zIndex(1)
             }
         }
