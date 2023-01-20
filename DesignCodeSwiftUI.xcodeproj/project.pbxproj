@@ -32,7 +32,7 @@
 		AFDD8AAA297595B300E2D01E /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDD8AA9297595B300E2D01E /* HomeViewModel.swift */; };
 		AFDD8AAD29759C0500E2D01E /* PreviewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDD8AAC29759C0500E2D01E /* PreviewProvider.swift */; };
 		AFDD8AAF2975A3CA00E2D01E /* ShowTabBarPreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDD8AAE2975A3CA00E2D01E /* ShowTabBarPreferenceKey.swift */; };
-		AFF395F629744268001D073A /* ScrollPreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF395F529744268001D073A /* ScrollPreferenceKey.swift */; };
+		AFF395F629744268001D073A /* PreferenceKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF395F529744268001D073A /* PreferenceKeys.swift */; };
 		AFF395F829744A1D001D073A /* AnimatableFontModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF395F729744A1D001D073A /* AnimatableFontModifier.swift */; };
 		AFF395FA29744E62001D073A /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF395F929744E62001D073A /* Course.swift */; };
 		AFFDC6362974994700E403B5 /* CourseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFDC6352974994700E403B5 /* CourseView.swift */; };
@@ -67,7 +67,7 @@
 		AFDD8AA9297595B300E2D01E /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		AFDD8AAC29759C0500E2D01E /* PreviewProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewProvider.swift; sourceTree = "<group>"; };
 		AFDD8AAE2975A3CA00E2D01E /* ShowTabBarPreferenceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowTabBarPreferenceKey.swift; sourceTree = "<group>"; };
-		AFF395F529744268001D073A /* ScrollPreferenceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollPreferenceKey.swift; sourceTree = "<group>"; };
+		AFF395F529744268001D073A /* PreferenceKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceKeys.swift; sourceTree = "<group>"; };
 		AFF395F729744A1D001D073A /* AnimatableFontModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatableFontModifier.swift; sourceTree = "<group>"; };
 		AFF395F929744E62001D073A /* Course.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
 		AFFDC6352974994700E403B5 /* CourseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseView.swift; sourceTree = "<group>"; };
@@ -238,7 +238,7 @@
 		AFF395FB297451C3001D073A /* Styles */ = {
 			isa = PBXGroup;
 			children = (
-				AFF395F529744268001D073A /* ScrollPreferenceKey.swift */,
+				AFF395F529744268001D073A /* PreferenceKeys.swift */,
 			);
 			path = Styles;
 			sourceTree = "<group>";
@@ -328,7 +328,7 @@
 				AFA4F9EE297982E10073919C /* CloseButton.swift in Sources */,
 				AFDD8AAA297595B300E2D01E /* HomeViewModel.swift in Sources */,
 				AF2056F8296B1507005928A8 /* TabItem.swift in Sources */,
-				AFF395F629744268001D073A /* ScrollPreferenceKey.swift in Sources */,
+				AFF395F629744268001D073A /* PreferenceKeys.swift in Sources */,
 				AF4F2C6D29734F3A004F62F6 /* SelectedTabBarItemKey.swift in Sources */,
 				AFDD8AAF2975A3CA00E2D01E /* ShowTabBarPreferenceKey.swift in Sources */,
 				AFA4F9EC297980160073919C /* SignUpView.swift in Sources */,

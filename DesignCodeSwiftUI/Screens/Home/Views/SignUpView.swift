@@ -19,8 +19,11 @@ struct SignUpView: View {
     @State private var email: String = ""
     @State private var password: String = ""
     @FocusState private var focusedField: Field?
-    @State var circleY: CGFloat = 120
-    
+    @State private var circleY: CGFloat = 120
+    @State private var emailY: CGFloat = 0
+    @State private var passwordY: CGFloat = 0
+    @State private var circleColor: Color = .blue
+
     var body: some View {
         ZStack {
             Color.clear
@@ -44,13 +47,8 @@ struct SignUpView: View {
                 .ultraThinMaterial,
                 in: RoundedRectangle(cornerRadius: 30, style: .continuous)
             )
-            .background(
-                Circle()
-                    .fill(.blue)
-                    .frame(width: 68, height: 68)
-                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-                    .offset(y: circleY)
-            )
+            .background(backgroundCircle)
+            .coordinateSpace(name: "container")
             .strokeStyle(cornerRadius: 30)
             .shadow(
                 color: Color("ShadowColor").opacity(0.2),
@@ -66,9 +64,11 @@ struct SignUpView: View {
             .onChange(of: focusedField) { newValue in
                 withAnimation {
                     if newValue == .email {
-                        circleY = 120
+                        circleY = emailY
+                        circleColor = .blue
                     } else {
-                        circleY = 190
+                        circleY = passwordY
+                        circleColor = .red
                     }
                 }
             }
@@ -84,11 +84,23 @@ struct SignUpView: View {
 
 struct SignUpView_Previews: PreviewProvider {
     static var previews: some View {
-        SignUpView(show: .constant(true))
+        ZStack {
+            SignUpView(show: .constant(true))
+        }
     }
 }
 
 extension SignUpView {
+    
+    private var geometryReader: some View {
+        GeometryReader { proxy in
+            Color.clear
+                .preference(
+                    key: CirclePreferenceKey.self,
+                    value: proxy.frame(in: .named("container")).minY
+                )
+        }
+    }
     
     private var emailTextField: some View {
         TextField("Email", text: $email)
@@ -103,6 +115,11 @@ extension SignUpView {
                 radius: 10,
                 y: 3
             )
+            .overlay(geometryReader)
+            .onPreferenceChange(CirclePreferenceKey.self) { value in
+                emailY = value
+                circleY = value
+            }
     }
     
     private var passwordField: some View {
@@ -115,6 +132,18 @@ extension SignUpView {
                 radius: 10,
                 y: 3
             )
+            .overlay(geometryReader)
+            .onPreferenceChange(CirclePreferenceKey.self) { value in
+                passwordY = value
+            }
+    }
+    
+    private var backgroundCircle: some View {
+        Circle()
+            .fill(circleColor)
+            .frame(width: 68, height: 68)
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+            .offset(y: circleY)
     }
     
     private var createAccountButton: some View {
