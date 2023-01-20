@@ -18,7 +18,6 @@ struct HomeView: View {
     @State private var showAccount: Bool = false
     @State private var selectedFeaturedCourse: Course? = nil
 
-    
     @StateObject private var viewModel = HomeViewModel()
     
     var body: some View {

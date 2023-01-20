@@ -31,6 +31,8 @@ struct SignUpView: View {
     @State private var passwordY: CGFloat = 0
     @State private var circleColor: Color = .blue
 
+    @State private var viewState: CGSize = .zero
+    
     private var titleText: String {
         type == .signUp ? "Sign up" : "Sign in"
     }
@@ -61,6 +63,12 @@ struct SignUpView: View {
             .background(backgroundCircle)
             .coordinateSpace(name: "container")
             .strokeStyle(cornerRadius: 30)
+            .mask(RoundedRectangle(cornerRadius: 30, style: .continuous))
+            .offset(viewState)
+            .rotationEffect(.degrees(viewState.width / 40))
+            .rotation3DEffect(.degrees(viewState.height / 20), axis: (x: 1, y: 0, z: 0))
+            .hueRotation(.degrees(viewState.width / 5))
+            .gesture(dragGesture)
             .shadow(
                 color: Color("ShadowColor").opacity(0.2),
                 radius: 30,
@@ -169,6 +177,12 @@ extension SignUpView {
         .buttonStyle(.angular)
         .tint(.accentColor)
         .controlSize(.large)
+        .shadow(
+            color: Color("ShadowColor").opacity(0.2),
+            radius: 30,
+            x: 0,
+            y: 30
+        )
     }
     
     private var footerLayer: some View {
@@ -194,5 +208,17 @@ extension SignUpView {
         .font(.footnote)
         .foregroundColor(.secondary)
         .tint(.secondary)
+    }
+    
+    var dragGesture: some Gesture {
+        DragGesture()
+            .onChanged { value in
+                viewState = value.translation
+            }
+            .onEnded { value in
+                withAnimation(.showCard) {
+                    viewState = .zero
+                }
+            }
     }
 }

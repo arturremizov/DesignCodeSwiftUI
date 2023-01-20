@@ -196,15 +196,23 @@
 			isa = PBXGroup;
 			children = (
 				AF4F2C77297358C7004F62F6 /* HomeView.swift */,
-				AFFDC63729749A1300E403B5 /* CourseDetailView.swift */,
-				AF4F2C7A29735918004F62F6 /* FeaturedItem.swift */,
-				AFFDC6352974994700E403B5 /* CourseView.swift */,
 				AF1DD3CC2976ECA7000DA49A /* SearchView.swift */,
-				AF2056F1296AFB33005928A8 /* AccountView.swift */,
-				AF1DD3CE2976F497000DA49A /* HexagonView.swift */,
+				AFFDC63729749A1300E403B5 /* CourseDetailView.swift */,
 				AFA4F9EB297980160073919C /* SignUpView.swift */,
+				AF2056F1296AFB33005928A8 /* AccountView.swift */,
+				AFB1CD19297AE8AE0021C54D /* Components */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		AFB1CD19297AE8AE0021C54D /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				AF4F2C7A29735918004F62F6 /* FeaturedItem.swift */,
+				AFFDC6352974994700E403B5 /* CourseView.swift */,
+				AF1DD3CE2976F497000DA49A /* HexagonView.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		AFC8B1B72972F2B9002BF454 /* TabBar */ = {
