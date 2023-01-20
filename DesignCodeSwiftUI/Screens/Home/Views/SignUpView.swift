@@ -9,10 +9,17 @@ import SwiftUI
 
 struct SignUpView: View {
     
+    enum Field: Hashable {
+        case email
+        case password
+    }
+    
     @Binding var show: Bool
     
     @State private var email: String = ""
     @State private var password: String = ""
+    @FocusState private var focusedField: Field?
+    @State var circleY: CGFloat = 120
     
     var body: some View {
         ZStack {
@@ -37,6 +44,13 @@ struct SignUpView: View {
                 .ultraThinMaterial,
                 in: RoundedRectangle(cornerRadius: 30, style: .continuous)
             )
+            .background(
+                Circle()
+                    .fill(.blue)
+                    .frame(width: 68, height: 68)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+                    .offset(y: circleY)
+            )
             .strokeStyle(cornerRadius: 30)
             .shadow(
                 color: Color("ShadowColor").opacity(0.2),
@@ -49,6 +63,15 @@ struct SignUpView: View {
                 Image("Blob 1")
                     .offset(x: 200, y: -100)
             )
+            .onChange(of: focusedField) { newValue in
+                withAnimation {
+                    if newValue == .email {
+                        circleY = 120
+                    } else {
+                        circleY = 190
+                    }
+                }
+            }
             
             CloseButton {
                 withAnimation {
@@ -74,12 +97,24 @@ extension SignUpView {
             .keyboardType(.emailAddress)
             .autocapitalization(.none)
             .disableAutocorrection(true)
+            .focused($focusedField, equals: .email)
+            .shadow(
+                color: focusedField == .email ? .primary.opacity(0.3) : .clear,
+                radius: 10,
+                y: 3
+            )
     }
     
     private var passwordField: some View {
         SecureField("Password", text: $password)
             .inputStyle(iconName: "lock")
             .textContentType(.password)
+            .focused($focusedField, equals: .password)
+            .shadow(
+                color: focusedField == .password ? .primary.opacity(0.3) : .clear,
+                radius: 10,
+                y: 3
+            )
     }
     
     private var createAccountButton: some View {
