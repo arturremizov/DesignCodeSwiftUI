@@ -23,6 +23,8 @@ struct SignUpView: View {
     @Binding var show: Bool
     @State var type: SignType
     
+    @AppStorage("isLogged") private var isLogged: Bool = false
+    
     @State private var email: String = ""
     @State private var password: String = ""
     @FocusState private var focusedField: Field?
@@ -216,7 +218,8 @@ extension SignUpView {
     
     private var createAccountButton: some View {
         Button {
-            
+            isLogged = true
+            dismiss()
         } label: {
             Text(type == .signUp ? "Create an account" : "Sign in")
                 .frame(maxWidth: .infinity)

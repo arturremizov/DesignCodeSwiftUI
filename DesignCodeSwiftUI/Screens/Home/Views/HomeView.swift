@@ -20,6 +20,8 @@ struct HomeView: View {
 
     @StateObject private var viewModel = HomeViewModel()
     
+    @AppStorage("isLogged") var isLogged: Bool = false
+    
     var body: some View {
         ZStack {
             Color("BackgroundColor")
@@ -110,12 +112,15 @@ extension HomeView {
     
     private var accountButton: some View {
         Button {
-//            showAccount = true
-            withAnimation {
-                showSignUpView = true
+            if isLogged {
+                showAccount = true
+            } else {
+                withAnimation {
+                    showSignUpView = true
+                }
             }
         } label: {
-            AvatarView()
+            AvatarView(isLogged: isLogged)
         }
         .sheet(isPresented: $showAccount) {
             AccountView()
