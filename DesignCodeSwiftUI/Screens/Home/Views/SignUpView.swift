@@ -32,7 +32,16 @@ struct SignUpView: View {
     @State private var circleColor: Color = .blue
 
     @State private var viewState: CGSize = .zero
+    @State private var isDismissed: Bool = false
     
+    @State private var isShowingContentContainer: Bool = false
+    @State private var isShowingCloseButton: Bool = false
+    @State private var isShowingBackgroundImage: Bool = false
+    @State private var isShowingTitle: Bool = false
+    @State private var isShowingSubtitle: Bool = false
+    @State private var isShowingContent: Bool = false
+
+
     private var titleText: String {
         type == .signUp ? "Sign up" : "Sign in"
     }
@@ -41,19 +50,31 @@ struct SignUpView: View {
         ZStack {
             Color.clear
                 .background(.regularMaterial)
+                .onTapGesture {
+                    dismiss()
+                }
                 .ignoresSafeArea()
             
             VStack(alignment: .leading, spacing: 16.0) {
                 Text(titleText)
                     .font(.largeTitle)
                     .bold()
+                    .opacity(isShowingTitle ? 1 : 0)
+                    .offset(y: isShowingTitle ? 0 : 20)
+                
                 Text("Access 120+ hours of courses, tutorials and livestreams")
                     .font(.headline)
+                    .opacity(isShowingSubtitle ? 1 : 0)
+                    .offset(y: isShowingSubtitle ? 0 : 20)
                 
-                emailTextField
-                passwordField
-                createAccountButton
-                footerLayer
+                Group {
+                    emailTextField
+                    passwordField
+                    createAccountButton
+                    footerLayer
+                }
+                .opacity(isShowingContent ? 1 : 0)
+                .offset(y: isShowingContent ? 0 : 20)
             }
             .padding(20)
             .background(
@@ -65,6 +86,7 @@ struct SignUpView: View {
             .strokeStyle(cornerRadius: 30)
             .mask(RoundedRectangle(cornerRadius: 30, style: .continuous))
             .offset(viewState)
+            .offset(y: isDismissed ? 1000: 0)
             .rotationEffect(.degrees(viewState.width / 40))
             .rotation3DEffect(.degrees(viewState.height / 20), axis: (x: 1, y: 0, z: 0))
             .hueRotation(.degrees(viewState.width / 5))
@@ -75,10 +97,16 @@ struct SignUpView: View {
                 x: 0,
                 y: 30
             )
+            .opacity(isShowingContentContainer ? 1 : 0)
+            .offset(y: isShowingContentContainer ? 0 : 200)
             .padding(20)
             .background(
                 Image("Blob 1")
                     .offset(x: 200, y: -100)
+                    .opacity(isShowingBackgroundImage ? 1 : 0)
+                    .offset(y: isShowingBackgroundImage ? 0 : 10)
+                    .blur(radius: isShowingBackgroundImage ? 0 : 40)
+                    .allowsHitTesting(false)
             )
             .onChange(of: focusedField) { newValue in
                 withAnimation {
@@ -93,9 +121,30 @@ struct SignUpView: View {
             }
             
             CloseButton {
-                withAnimation {
-                    show = false
-                }
+                dismiss()
+            }
+            .opacity(isShowingCloseButton ? 1 : 0)
+            .offset(y: isShowingCloseButton ? 0 : -200)
+        }
+        .onAppear {
+            withAnimation(.easeOut) {
+                isShowingContentContainer = true
+            }
+            withAnimation(.easeOut.delay(0.1)) {
+                isShowingCloseButton = true
+            }
+            withAnimation(.easeOut(duration: 1).delay(0.2)) {
+                isShowingBackgroundImage = true
+            }
+            
+            withAnimation(.spring().delay(0.1)) {
+                isShowingTitle = true
+            }
+            withAnimation(.spring().delay(0.2)) {
+                isShowingSubtitle = true
+            }
+            withAnimation(.spring().delay(0.3)) {
+                isShowingContent = true
             }
         }
     }
@@ -216,9 +265,25 @@ extension SignUpView {
                 viewState = value.translation
             }
             .onEnded { value in
-                withAnimation(.showCard) {
-                    viewState = .zero
+                if value.translation.height > 200 {
+                    dismiss()
+                } else {
+                    withAnimation(.showCard) {
+                        viewState = .zero
+                    }
                 }
             }
+    }
+}
+
+extension SignUpView {
+    
+    private func dismiss() {
+        withAnimation {
+            isDismissed = true
+        }
+        withAnimation(.linear.delay(0.3)) {
+            show = false
+        }
     }
 }
