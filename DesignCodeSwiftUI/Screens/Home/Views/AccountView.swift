@@ -13,6 +13,7 @@ struct AccountView: View {
     @State private var isPinned = false
     @Environment(\.dismiss) private var dismiss
     @AppStorage("isLogged") private var isLogged: Bool = false
+    @StateObject var viewModel: AccountViewModel = AccountViewModel()
 
     var body: some View {
         NavigationStack {
@@ -40,6 +41,12 @@ struct AccountView: View {
                     }
                 }
             }
+        }
+        .task {
+            await viewModel.fetchAddress()
+        }
+        .refreshable {
+            await viewModel.fetchAddress()
         }
     }
 }
@@ -75,7 +82,7 @@ extension AccountView {
             HStack {
                 Image(systemName: "location")
                     .imageScale(.large)
-                Text("Canada")
+                Text(viewModel.address?.country ?? "")
                     .foregroundColor(.secondary)
             }
         }

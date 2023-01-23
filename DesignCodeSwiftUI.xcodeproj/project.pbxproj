@@ -25,6 +25,8 @@
 		AF4F2C7D29735A05004F62F6 /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4F2C7C29735A05004F62F6 /* NavigationBar.swift */; };
 		AF6CC2392979987400AF1D36 /* InputStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6CC2382979987400AF1D36 /* InputStyle.swift */; };
 		AF9A69C5297D7DAB00006640 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9A69C4297D7DAB00006640 /* AvatarView.swift */; };
+		AF9BF432297EE0F100127592 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9BF431297EE0F100127592 /* Address.swift */; };
+		AF9BF434297EE14D00127592 /* AccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9BF433297EE14D00127592 /* AccountViewModel.swift */; };
 		AFA4F9EC297980160073919C /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA4F9EB297980160073919C /* SignUpView.swift */; };
 		AFA4F9EE297982E10073919C /* CloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA4F9ED297982E10073919C /* CloseButton.swift */; };
 		AFA4F9F0297986DA0073919C /* AngularButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA4F9EF297986DA0073919C /* AngularButtonStyle.swift */; };
@@ -61,6 +63,8 @@
 		AF4F2C7C29735A05004F62F6 /* NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
 		AF6CC2382979987400AF1D36 /* InputStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputStyle.swift; sourceTree = "<group>"; };
 		AF9A69C4297D7DAB00006640 /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
+		AF9BF431297EE0F100127592 /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
+		AF9BF433297EE14D00127592 /* AccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewModel.swift; sourceTree = "<group>"; };
 		AFA4F9EB297980160073919C /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		AFA4F9ED297982E10073919C /* CloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseButton.swift; sourceTree = "<group>"; };
 		AFA4F9EF297986DA0073919C /* AngularButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AngularButtonStyle.swift; sourceTree = "<group>"; };
@@ -234,6 +238,7 @@
 			isa = PBXGroup;
 			children = (
 				AFDD8AA9297595B300E2D01E /* HomeViewModel.swift */,
+				AF9BF433297EE14D00127592 /* AccountViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -259,6 +264,7 @@
 			children = (
 				AFF395F929744E62001D073A /* Course.swift */,
 				AFDBDDAB297841670037DF88 /* CourseSuggestion.swift */,
+				AF9BF431297EE0F100127592 /* Address.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -343,6 +349,7 @@
 				AF4F2C6D29734F3A004F62F6 /* SelectedTabBarItemKey.swift in Sources */,
 				AFDD8AAF2975A3CA00E2D01E /* ShowTabBarPreferenceKey.swift in Sources */,
 				AFA4F9EC297980160073919C /* SignUpView.swift in Sources */,
+				AF9BF434297EE14D00127592 /* AccountViewModel.swift in Sources */,
 				AF4F2C7D29735A05004F62F6 /* NavigationBar.swift in Sources */,
 				AF2056F6296B118F005928A8 /* TabBar.swift in Sources */,
 				AF2056F0296AF776005928A8 /* StrokeStyle.swift in Sources */,
@@ -359,6 +366,7 @@
 				AF1DD3CF2976F497000DA49A /* HexagonView.swift in Sources */,
 				AF11742F2969BF3F00EDF86F /* DesignCodeSwiftUIApp.swift in Sources */,
 				AF4F2C7B29735918004F62F6 /* FeaturedItem.swift in Sources */,
+				AF9BF432297EE0F100127592 /* Address.swift in Sources */,
 				AF4F2C78297358C7004F62F6 /* HomeView.swift in Sources */,
 				AFC8B1B92972F2CA002BF454 /* RoundedCornerShape.swift in Sources */,
 				AFDD8AAD29759C0500E2D01E /* PreviewProvider.swift in Sources */,
