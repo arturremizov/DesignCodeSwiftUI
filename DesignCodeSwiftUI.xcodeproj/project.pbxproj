@@ -17,6 +17,7 @@
 		AF2056F4296B0785005928A8 /* BlobView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2056F3296B0785005928A8 /* BlobView.swift */; };
 		AF2056F6296B118F005928A8 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2056F5296B118F005928A8 /* TabBar.swift */; };
 		AF2056F8296B1507005928A8 /* TabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2056F7296B1507005928A8 /* TabItem.swift */; };
+		AF24CD612982D00800BB06CA /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF24CD602982D00800BB06CA /* Coin.swift */; };
 		AF4F2C6B297340D4004F62F6 /* TabBarItemPreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4F2C6A297340D4004F62F6 /* TabBarItemPreferenceKey.swift */; };
 		AF4F2C6D29734F3A004F62F6 /* SelectedTabBarItemKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4F2C6C29734F3A004F62F6 /* SelectedTabBarItemKey.swift */; };
 		AF4F2C6F297356F4004F62F6 /* AppTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4F2C6E297356F4004F62F6 /* AppTabView.swift */; };
@@ -55,6 +56,7 @@
 		AF2056F3296B0785005928A8 /* BlobView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlobView.swift; sourceTree = "<group>"; };
 		AF2056F5296B118F005928A8 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		AF2056F7296B1507005928A8 /* TabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItem.swift; sourceTree = "<group>"; };
+		AF24CD602982D00800BB06CA /* Coin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coin.swift; sourceTree = "<group>"; };
 		AF4F2C6A297340D4004F62F6 /* TabBarItemPreferenceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItemPreferenceKey.swift; sourceTree = "<group>"; };
 		AF4F2C6C29734F3A004F62F6 /* SelectedTabBarItemKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedTabBarItemKey.swift; sourceTree = "<group>"; };
 		AF4F2C6E297356F4004F62F6 /* AppTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabView.swift; sourceTree = "<group>"; };
@@ -265,6 +267,7 @@
 				AFF395F929744E62001D073A /* Course.swift */,
 				AFDBDDAB297841670037DF88 /* CourseSuggestion.swift */,
 				AF9BF431297EE0F100127592 /* Address.swift */,
+				AF24CD602982D00800BB06CA /* Coin.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -348,6 +351,7 @@
 				AFF395F629744268001D073A /* PreferenceKeys.swift in Sources */,
 				AF4F2C6D29734F3A004F62F6 /* SelectedTabBarItemKey.swift in Sources */,
 				AFDD8AAF2975A3CA00E2D01E /* ShowTabBarPreferenceKey.swift in Sources */,
+				AF24CD612982D00800BB06CA /* Coin.swift in Sources */,
 				AFA4F9EC297980160073919C /* SignUpView.swift in Sources */,
 				AF9BF434297EE14D00127592 /* AccountViewModel.swift in Sources */,
 				AF4F2C7D29735A05004F62F6 /* NavigationBar.swift in Sources */,

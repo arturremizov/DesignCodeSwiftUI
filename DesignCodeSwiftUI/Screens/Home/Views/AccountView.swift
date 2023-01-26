@@ -28,6 +28,8 @@ struct AccountView: View {
                     Text("Sign out")
                 }
                 .tint(.red)
+                
+                coinsSection
             }
             .listStyle(.insetGrouped)
             .navigationTitle("Account")
@@ -43,10 +45,10 @@ struct AccountView: View {
             }
         }
         .task {
-            await viewModel.fetchAddress()
+            await viewModel.fetchData()
         }
         .refreshable {
-            await viewModel.fetchAddress()
+            await viewModel.fetchData()
         }
     }
 }
@@ -151,5 +153,29 @@ extension AccountView {
             }
         }
         .tint(isPinned ? .gray : .yellow)
+    }
+    
+    private var coinsSection: some View {
+        Section("Coins") {
+            ForEach(viewModel.coins) { coin in
+                HStack {
+                    AsyncImage(url: URL(string: coin.logo)) { image in
+                        image
+                            .resizable()
+                            .scaledToFit()
+                    } placeholder: {
+                        ProgressView()
+                    }
+                    .frame(width: 32, height: 32)
+                    
+                    VStack(alignment: .leading, spacing: 4.0) {
+                        Text(coin.coinName)
+                        Text(coin.acronym)
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                    }
+                }
+            }
+        }
     }
 }
