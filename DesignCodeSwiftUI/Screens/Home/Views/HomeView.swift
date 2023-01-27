@@ -20,7 +20,8 @@ struct HomeView: View {
 
     @StateObject private var viewModel = HomeViewModel()
     
-    @AppStorage("isLogged") var isLogged: Bool = false
+    @AppStorage("isLogged") private var isLogged: Bool = false
+    @AppStorage("isLiteMode") private var isLiteMode: Bool = true
     
     var body: some View {
         ZStack {
@@ -155,7 +156,7 @@ extension HomeView {
                             .degrees(minX / -10),
                             axis: (x: 0, y: 1, z: 0)
                         )
-                        .shadow(color: Color("ShadowColor").opacity(0.3), radius: 10, y: 10)
+                        .shadow(color: Color("ShadowColor").opacity(isLiteMode ? 0 : 0.3), radius: 5, y: 3)
                         .blur(radius: abs(minX) / 40)
                         .overlay {
                             Image(item.image)

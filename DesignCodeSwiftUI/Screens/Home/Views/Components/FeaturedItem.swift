@@ -45,7 +45,7 @@ extension FeaturedItem {
             .mask(Circle())
             .padding(9)
             .background(
-                .ultraThinMaterial,
+                Color(uiColor: .systemBackground).opacity(0.1),
                 in: RoundedRectangle(cornerRadius: 16, style: .continuous)
             )
             .strokeStyle(cornerRadius: 16)

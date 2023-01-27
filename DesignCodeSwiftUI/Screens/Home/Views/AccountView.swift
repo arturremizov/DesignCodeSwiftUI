@@ -12,7 +12,10 @@ struct AccountView: View {
     @State private var isDeleted = false
     @State private var isPinned = false
     @Environment(\.dismiss) private var dismiss
+    
     @AppStorage("isLogged") private var isLogged: Bool = false
+    @AppStorage("isLiteMode") private var isLiteMode: Bool = true
+
     @StateObject var viewModel: AccountViewModel = AccountViewModel()
 
     var body: some View {
@@ -20,6 +23,7 @@ struct AccountView: View {
             List {
                 profile
                 menu
+                lightMode
                 links
                 Button {
                     isLogged = false
@@ -142,6 +146,14 @@ extension AccountView {
         }
         .accentColor(.primary)
         .listRowSeparator(.hidden)
+    }
+    
+    private var lightMode: some View {
+        Section {
+            Toggle(isOn: $isLiteMode) {
+                Label("Light Mode", systemImage: isLiteMode ? "tortoise" : "hare")
+            }
+        }
     }
     
     private var pinButton: some View {
