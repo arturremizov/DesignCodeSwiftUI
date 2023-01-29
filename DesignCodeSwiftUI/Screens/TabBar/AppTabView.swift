@@ -15,7 +15,7 @@ struct AppTabView: View {
         TabBar(selection: $selectedTab) {
             HomeView()
                 .tabBarItem(tab: .home)
-            Text("Explore")
+            ExploreView()
                 .tabBarItem(tab: .explore)
             Text("Notifications")
                 .tabBarItem(tab: .notifications)

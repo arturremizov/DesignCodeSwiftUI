@@ -15,7 +15,6 @@ struct HomeView: View {
     @State private var selectedCourse: Course? = nil
     @State private var showSearch: Bool = false
     @State private var showSignUpView: Bool = false
-    @State private var showAccount: Bool = false
     @State private var selectedFeaturedCourse: Course? = nil
 
     @StateObject private var viewModel = HomeViewModel()
@@ -85,47 +84,10 @@ extension HomeView {
             title: "Featured",
             hasScrolled: $hasScrolled,
             trailingButtons: {
-                searchButton
-                accountButton
+                SearchButton(showSearch: $showSearch, courses: viewModel.courses)
+                AccountButton(isLogged: $isLogged, showSignUpView: $showSignUpView)
             }
         )
-    }
-    
-    private var searchButton: some View {
-        Button {
-            showSearch = true
-        } label: {
-            Image(systemName: "magnifyingglass")
-                .font(.body)
-                .bold()
-                .frame(width: 36, height: 36)
-                .foregroundColor(.secondary)
-                .background(
-                    .ultraThinMaterial,
-                    in: RoundedRectangle(cornerRadius: 14, style: .continuous)
-                )
-                .strokeStyle(cornerRadius: 14)
-        }
-        .sheet(isPresented: $showSearch) {
-            SearchView(courses: viewModel.courses)
-        }
-    }
-    
-    private var accountButton: some View {
-        Button {
-            if isLogged {
-                showAccount = true
-            } else {
-                withAnimation {
-                    showSignUpView = true
-                }
-            }
-        } label: {
-            AvatarView(isLogged: isLogged)
-        }
-        .sheet(isPresented: $showAccount) {
-            AccountView()
-        }
     }
     
     private var scrollDetection: some View {

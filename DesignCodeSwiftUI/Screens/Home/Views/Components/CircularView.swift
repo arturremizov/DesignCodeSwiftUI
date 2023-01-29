@@ -10,12 +10,18 @@ import SwiftUI
 struct CircularView: View {
     
     let value: CGFloat
+    let lineWidth: CGFloat
     @State private var appear: Bool = false
+    
+    init(value: CGFloat, lineWidth: CGFloat = 4) {
+        self.value = value
+        self.lineWidth = lineWidth
+    }
     
     var body: some View {
         Circle()
             .trim(from: 0, to: appear ? value : 0)
-            .stroke(style: StrokeStyle(lineWidth: 4, lineCap: .round))
+            .stroke(style: StrokeStyle(lineWidth: lineWidth, lineCap: .round))
             .fill(
                 .angularGradient(
                     colors: [.purple, .pink, .purple],
