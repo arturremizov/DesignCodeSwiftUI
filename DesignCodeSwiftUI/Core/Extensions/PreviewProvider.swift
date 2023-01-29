@@ -34,4 +34,15 @@ class DeveloperPreview {
                                       background: "Background 5",
                                       logo: "Logo 2",
                                       progress: 0.5)
+    
+    let handbook = Handbook(title: "SwiftUI Handbook",
+                            subtitle: "80 sections - 9 hours",
+                            text: "A comprehensive series of tutorials covering Xcode, SwiftUI and all the layout and development techniques",
+                            logo: "Logo 1",
+                            image: "Illustration 1",
+                            color1: .teal,
+                            color2: .blue)
+    
+    let topic = Topic(title: "iOS Development", icon: "iphone")
+
 }

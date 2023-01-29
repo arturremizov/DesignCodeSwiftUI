@@ -22,6 +22,7 @@ struct AppTabView: View {
             Text("Library")
                 .tabBarItem(tab: .library)
         }
+        .dynamicTypeSize(.large ... .xxLarge)
     }
 }
 

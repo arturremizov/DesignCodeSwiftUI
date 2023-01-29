@@ -10,6 +10,7 @@ import SwiftUI
 struct FeaturedItem: View {
     
     let course: Course
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8.0) {
@@ -57,6 +58,7 @@ extension FeaturedItem {
             .font(.largeTitle)
             .fontWeight(.bold)
             .foregroundStyle(.linearGradient(colors: [.primary, .primary.opacity(0.5)], startPoint: .topLeading, endPoint: .bottomTrailing))
+            .dynamicTypeSize(.large)
     }
     
     private var subtitle: some View {
@@ -70,7 +72,7 @@ extension FeaturedItem {
         Text(course.text)
             .font(.footnote)
             .multilineTextAlignment(.leading)
-            .lineLimit(2)
+            .lineLimit(dynamicTypeSize > .large ? 1 : 2)
             .frame(maxWidth: .infinity, alignment: .leading)
             .foregroundStyle(.secondary)
     }
