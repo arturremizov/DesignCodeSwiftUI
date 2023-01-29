@@ -25,6 +25,11 @@
 		AF4F2C7B29735918004F62F6 /* FeaturedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4F2C7A29735918004F62F6 /* FeaturedItem.swift */; };
 		AF4F2C7D29735A05004F62F6 /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4F2C7C29735A05004F62F6 /* NavigationBar.swift */; };
 		AF6CC2392979987400AF1D36 /* InputStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6CC2382979987400AF1D36 /* InputStyle.swift */; };
+		AF7326D62986B6980039B1B2 /* CourseDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7326D52986B6980039B1B2 /* CourseDetailViewModel.swift */; };
+		AF7326D82986B7360039B1B2 /* SectionRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7326D72986B7360039B1B2 /* SectionRow.swift */; };
+		AF7326DA2986B9640039B1B2 /* SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7326D92986B9640039B1B2 /* SectionView.swift */; };
+		AF788199298576F4005E2C32 /* CircularView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF788198298576F4005E2C32 /* CircularView.swift */; };
+		AF78819B298578C2005E2C32 /* CourseSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF78819A298578C2005E2C32 /* CourseSection.swift */; };
 		AF9A69C5297D7DAB00006640 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9A69C4297D7DAB00006640 /* AvatarView.swift */; };
 		AF9BF432297EE0F100127592 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9BF431297EE0F100127592 /* Address.swift */; };
 		AF9BF434297EE14D00127592 /* AccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9BF433297EE14D00127592 /* AccountViewModel.swift */; };
@@ -64,6 +69,11 @@
 		AF4F2C7A29735918004F62F6 /* FeaturedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedItem.swift; sourceTree = "<group>"; };
 		AF4F2C7C29735A05004F62F6 /* NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
 		AF6CC2382979987400AF1D36 /* InputStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputStyle.swift; sourceTree = "<group>"; };
+		AF7326D52986B6980039B1B2 /* CourseDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseDetailViewModel.swift; sourceTree = "<group>"; };
+		AF7326D72986B7360039B1B2 /* SectionRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionRow.swift; sourceTree = "<group>"; };
+		AF7326D92986B9640039B1B2 /* SectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionView.swift; sourceTree = "<group>"; };
+		AF788198298576F4005E2C32 /* CircularView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularView.swift; sourceTree = "<group>"; };
+		AF78819A298578C2005E2C32 /* CourseSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseSection.swift; sourceTree = "<group>"; };
 		AF9A69C4297D7DAB00006640 /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
 		AF9BF431297EE0F100127592 /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		AF9BF433297EE14D00127592 /* AccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewModel.swift; sourceTree = "<group>"; };
@@ -220,6 +230,9 @@
 				AFFDC6352974994700E403B5 /* CourseView.swift */,
 				AF1DD3CE2976F497000DA49A /* HexagonView.swift */,
 				AF9A69C4297D7DAB00006640 /* AvatarView.swift */,
+				AF788198298576F4005E2C32 /* CircularView.swift */,
+				AF7326D72986B7360039B1B2 /* SectionRow.swift */,
+				AF7326D92986B9640039B1B2 /* SectionView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -241,6 +254,7 @@
 			children = (
 				AFDD8AA9297595B300E2D01E /* HomeViewModel.swift */,
 				AF9BF433297EE14D00127592 /* AccountViewModel.swift */,
+				AF7326D52986B6980039B1B2 /* CourseDetailViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -266,6 +280,7 @@
 			children = (
 				AFF395F929744E62001D073A /* Course.swift */,
 				AFDBDDAB297841670037DF88 /* CourseSuggestion.swift */,
+				AF78819A298578C2005E2C32 /* CourseSection.swift */,
 				AF9BF431297EE0F100127592 /* Address.swift */,
 				AF24CD602982D00800BB06CA /* Coin.swift */,
 			);
@@ -346,6 +361,7 @@
 				AF2056F2296AFB33005928A8 /* AccountView.swift in Sources */,
 				AFFDC63829749A1300E403B5 /* CourseDetailView.swift in Sources */,
 				AFA4F9EE297982E10073919C /* CloseButton.swift in Sources */,
+				AF7326DA2986B9640039B1B2 /* SectionView.swift in Sources */,
 				AFDD8AAA297595B300E2D01E /* HomeViewModel.swift in Sources */,
 				AF2056F8296B1507005928A8 /* TabItem.swift in Sources */,
 				AFF395F629744268001D073A /* PreferenceKeys.swift in Sources */,
@@ -356,17 +372,21 @@
 				AF9BF434297EE14D00127592 /* AccountViewModel.swift in Sources */,
 				AF4F2C7D29735A05004F62F6 /* NavigationBar.swift in Sources */,
 				AF2056F6296B118F005928A8 /* TabBar.swift in Sources */,
+				AF7326D62986B6980039B1B2 /* CourseDetailViewModel.swift in Sources */,
 				AF2056F0296AF776005928A8 /* StrokeStyle.swift in Sources */,
 				AF9A69C5297D7DAB00006640 /* AvatarView.swift in Sources */,
 				AF6CC2392979987400AF1D36 /* InputStyle.swift in Sources */,
 				AFF395FA29744E62001D073A /* Course.swift in Sources */,
 				AFA4F9F0297986DA0073919C /* AngularButtonStyle.swift in Sources */,
+				AF78819B298578C2005E2C32 /* CourseSection.swift in Sources */,
 				AFF395F829744A1D001D073A /* AnimatableFontModifier.swift in Sources */,
 				AFDBDDAC297841670037DF88 /* CourseSuggestion.swift in Sources */,
+				AF788199298576F4005E2C32 /* CircularView.swift in Sources */,
 				AF1DD3CD2976ECA7000DA49A /* SearchView.swift in Sources */,
 				AFFDC6362974994700E403B5 /* CourseView.swift in Sources */,
 				AF4F2C6F297356F4004F62F6 /* AppTabView.swift in Sources */,
 				AFFDC63A2974A07400E403B5 /* Animations.swift in Sources */,
+				AF7326D82986B7360039B1B2 /* SectionRow.swift in Sources */,
 				AF1DD3CF2976F497000DA49A /* HexagonView.swift in Sources */,
 				AF11742F2969BF3F00EDF86F /* DesignCodeSwiftUIApp.swift in Sources */,
 				AF4F2C7B29735918004F62F6 /* FeaturedItem.swift in Sources */,

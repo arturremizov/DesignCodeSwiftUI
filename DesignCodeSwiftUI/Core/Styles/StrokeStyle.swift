@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct StrokeStyle: ViewModifier {
+struct StrokeStyleModifier: ViewModifier {
     
     let cornerRadius: CGFloat
     @Environment(\.colorScheme) private var colorScheme
@@ -53,7 +53,7 @@ struct RoundedCornerStrokeStyle: ViewModifier {
 extension View {
     
     func strokeStyle(cornerRadius: CGFloat = 30) -> some View {
-        modifier(StrokeStyle(cornerRadius: cornerRadius))
+        modifier(StrokeStyleModifier(cornerRadius: cornerRadius))
     }
     
     func strokeStyle(cornerRadius: CGFloat, corners: UIRectCorner) -> some View {

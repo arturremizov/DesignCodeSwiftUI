@@ -26,4 +26,12 @@ class DeveloperPreview {
                         image: "Illustration 9",
                         background: "Background 5",
                         logo: "Logo 2")
+    
+    let courseSection = CourseSection(title: "Advanced Custom Layout",
+                                      subtitle: "SwiftUI for iOS 15",
+                                      text: "Build an iOS app for iOS 15 with custom layouts...",
+                                      image: "Illustration 1",
+                                      background: "Background 5",
+                                      logo: "Logo 2",
+                                      progress: 0.5)
 }
