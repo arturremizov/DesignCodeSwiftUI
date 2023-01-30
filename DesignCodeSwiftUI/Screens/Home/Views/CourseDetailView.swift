@@ -112,6 +112,7 @@ extension CourseDetailView {
             .padding(20)
             .frame(maxWidth: 500)
             .matchedGeometryEffect(id: "image-\(course.id)", in: namespace)
+            .accessibilityLabel("Cover Image")
     }
     
     private var headerBackgroundImage: some View {

@@ -58,6 +58,7 @@ struct HomeView: View {
             if showSignUpView {
                 SignUpView(show: $showSignUpView, type: .signIn)
                     .zIndex(1)
+                    .accessibilityAddTraits(.isModal)
             }
         }
         .statusBarHidden(showCourseDetail)
@@ -131,6 +132,8 @@ extension HomeView {
                         .onTapGesture {
                             selectedFeaturedCourse = item
                         }
+                        .accessibilityElement(children: .combine)
+                        .accessibilityAddTraits(.isButton)
                 }
             }
         }
@@ -139,6 +142,7 @@ extension HomeView {
         .background(
             Image("Blob 1")
                 .offset(x: 250, y:-100)
+                .accessibilityHidden(true)
         )
         .sheet(item: $selectedFeaturedCourse) { course in
             CourseDetailView(course: course, namespace: namespace, show: .constant(true))
@@ -164,7 +168,9 @@ extension HomeView {
                                 selectedCourse = item
                                 showCourseDetail.toggle()
                             }
-                    }
+                        }
+                        .accessibilityElement(children: .combine)
+                        .accessibilityAddTraits(.isButton)
                 }
             } else {
                 ForEach(viewModel.courses) { item in

@@ -109,6 +109,7 @@ struct SignUpView: View {
                     .offset(y: isShowingBackgroundImage ? 0 : 10)
                     .blur(radius: isShowingBackgroundImage ? 0 : 40)
                     .allowsHitTesting(false)
+                    .accessibilityHidden(true)
             )
             .onChange(of: focusedField) { newValue in
                 withAnimation {

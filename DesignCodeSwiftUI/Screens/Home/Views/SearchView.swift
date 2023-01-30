@@ -51,6 +51,7 @@ struct SearchView: View {
                 .background(
                     Image("Blob 1")
                         .offset(x: -100, y: -200)
+                        .accessibilityHidden(true)
                 )
             }
             .searchable(

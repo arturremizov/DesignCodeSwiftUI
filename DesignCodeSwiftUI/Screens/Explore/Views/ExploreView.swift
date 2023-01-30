@@ -44,11 +44,13 @@ struct ExploreView: View {
             .background(
                 Image("Blob 1")
                     .offset(x: -100, y: -400)
+                    .accessibilityHidden(true)
             )
             
             if showSignUpView {
                 SignUpView(show: $showSignUpView, type: .signIn)
                     .zIndex(1)
+                    .accessibilityAddTraits(.isModal)
             }
         }
     }

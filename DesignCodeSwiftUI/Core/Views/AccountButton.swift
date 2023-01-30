@@ -26,6 +26,9 @@ struct AccountButton: View {
         } label: {
             AvatarView(isLogged: isLogged)
         }
+        .accessibilityElement()
+        .accessibilityLabel("Account")
+        .accessibilityAddTraits(.isButton)
         .sheet(isPresented: $showAccount) {
             AccountView()
         }
