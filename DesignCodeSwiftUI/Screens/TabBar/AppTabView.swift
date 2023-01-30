@@ -15,11 +15,11 @@ struct AppTabView: View {
         TabBar(selection: $selectedTab) {
             HomeView()
                 .tabBarItem(tab: .home)
-            ExploreView()
+            LibraryView(type: .explore)
                 .tabBarItem(tab: .explore)
-            Text("Notifications")
+            NotificationsView()
                 .tabBarItem(tab: .notifications)
-            Text("Library")
+            LibraryView(type: .library)
                 .tabBarItem(tab: .library)
         }
         .dynamicTypeSize(.large ... .xxLarge)

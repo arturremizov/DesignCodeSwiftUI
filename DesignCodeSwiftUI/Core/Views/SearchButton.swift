@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SearchButton: View {
     
-    @Binding var showSearch: Bool
+    @State var showSearch: Bool = false
     let courses: [Course]
     
     var body: some View {
@@ -35,6 +35,6 @@ struct SearchButton: View {
 
 struct SearchButton_Previews: PreviewProvider {
     static var previews: some View {
-        SearchButton(showSearch: .constant(false), courses: Array(repeating: dev.course, count: 5))
+        SearchButton(courses: Array(repeating: dev.course, count: 5))
     }
 }

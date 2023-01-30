@@ -13,13 +13,10 @@ struct HomeView: View {
     @Namespace private var namespace
     @State private var showCourseDetail: Bool = false
     @State private var selectedCourse: Course? = nil
-    @State private var showSearch: Bool = false
     @State private var showSignUpView: Bool = false
     @State private var selectedFeaturedCourse: Course? = nil
 
     @StateObject private var viewModel = HomeViewModel()
-    
-    @AppStorage("isLogged") private var isLogged: Bool = false
     @AppStorage("isLiteMode") private var isLiteMode: Bool = true
     
     var body: some View {
@@ -85,8 +82,8 @@ extension HomeView {
             title: "Featured",
             hasScrolled: $hasScrolled,
             trailingButtons: {
-                SearchButton(showSearch: $showSearch, courses: viewModel.courses)
-                AccountButton(isLogged: $isLogged, showSignUpView: $showSignUpView)
+                SearchButton(courses: viewModel.courses)
+                AccountButton(showSignUpView: $showSignUpView)
             }
         )
     }

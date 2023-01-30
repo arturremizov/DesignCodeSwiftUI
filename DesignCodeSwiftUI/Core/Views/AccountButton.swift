@@ -9,11 +9,11 @@ import SwiftUI
 
 struct AccountButton: View {
     
-    @Binding var isLogged: Bool
     @Binding var showSignUpView: Bool
     
     @State private var showAccount: Bool = false
-
+    @AppStorage("isLogged") private var isLogged: Bool = false
+    
     var body: some View {
         Button {
             if isLogged {
@@ -37,6 +37,6 @@ struct AccountButton: View {
 
 struct AccountButton_Previews: PreviewProvider {
     static var previews: some View {
-        AccountButton(isLogged: .constant(true), showSignUpView: .constant(false))
+        AccountButton(showSignUpView: .constant(false))
     }
 }
